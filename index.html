@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>João Felix · Portfólio</title>
+<meta name="description" content="Atendimento, estratégia, branding, conteúdo e web. Escolha um portfólio para explorar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f3ece0; --cream-2:#ebe2d2; --ink:#1e1a16; --muted:#6f655a;
+    --terra:#b5532f; --terra-d:#8f3f22; --line:rgba(30,26,22,.16);
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Outfit',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+  header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+  header .brand{font-family:var(--serif);font-size:22px;font-weight:600;text-decoration:none}
+  header nav{display:flex;gap:22px}
+  header nav a{text-decoration:none;color:var(--muted)}
+  header nav a:hover{color:var(--terra)}
+
+  .hero{padding:88px 0 72px}
+  .hero .mono{color:var(--terra);margin-bottom:22px}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(52px,10vw,124px);line-height:.95;letter-spacing:-.02em}
+  .hero h1 em{color:var(--terra);font-weight:400}
+  .hero p{max-width:520px;margin-top:28px;font-size:19px;color:var(--muted)}
+  .hero p b{color:var(--ink);font-weight:500}
+
+  .sec-title{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-top:1px solid var(--ink)}
+  .sec-title h2{font-family:var(--serif);font-weight:500;font-size:34px}
+  .sec-title span{color:var(--muted)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--line)}
+  .card{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:290px;padding:26px 24px;
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;transition:background .25s,color .25s}
+  .card .num{color:var(--muted)}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1;margin:18px 0 8px}
+  .card .sub{color:var(--terra);margin-bottom:14px}
+  .card p{font-size:15px;color:var(--muted);max-width:30ch}
+  .card .go{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+  .card .go i{font-style:normal;font-size:22px;transition:transform .25s}
+  .card.on:hover{background:var(--ink);color:var(--cream)}
+  .card.on:hover p,.card.on:hover .num{color:#cfc5b5}
+  .card.on:hover .sub{color:#e39a78}
+  .card.on:hover .go i{transform:translate(4px,-4px)}
+  .card.soon{cursor:default;background:var(--cream-2)}
+  .card.soon h3,.card.soon p{opacity:.55}
+  .tag{display:inline-block;padding:4px 10px;border:1px solid currentColor;border-radius:999px}
+  .tag.live{color:var(--terra)}
+  .tag.wait{color:var(--muted)}
+
+  .about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;padding:88px 0}
+  .about h2{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.05}
+  .about h2 em{color:var(--terra)}
+  .about p{font-size:18px;color:var(--muted);margin-bottom:16px}
+  .about p b{color:var(--ink);font-weight:500}
+
+  footer{background:var(--ink);color:var(--cream);padding:72px 0 40px}
+  footer h2{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7vw,84px);line-height:1}
+  footer h2 em{color:#e39a78}
+  .links{display:flex;flex-wrap:wrap;gap:14px 32px;margin-top:32px}
+  .links a{text-decoration:none;border-bottom:1px solid rgba(243,236,224,.3);padding-bottom:3px}
+  .links a:hover{color:#e39a78;border-color:#e39a78}
+  .copy{margin-top:56px;color:#9d9384}
+
+  @media(max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .about{grid-template-columns:1fr;gap:20px;padding:64px 0}
+  }
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .card{min-height:230px}
+    header nav{display:none}
+    .hero{padding:56px 0 48px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="brand" href="#">João Felix</a>
+    <nav class="mono">
+      <a href="#portfolios">Portfólios</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="mono">Portfólio · 2026 · Sorocaba — SP</p>
+    <h1>Publicidade que <em>sai do papel</em></h1>
+    <p>Do atendimento à direção de arte e ao código. <b>Escolha por onde começar:</b> cada portfólio abaixo mostra um lado do meu trabalho.</p>
+  </section>
+
+  <section id="portfolios">
+    <div class="sec-title"><h2>Portfólios</h2><span class="mono" id="contagem"></span></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="sobre" class="about">
+    <h2>Estratégia, marca e <em>execução</em></h2>
+    <div>
+      <p>Atuo em toda a régua de uma campanha: <b>prospecção e atendimento</b>, estratégia, direção de arte, copy e desenvolvimento web.</p>
+      <p>Tenho marca própria, a <b>orgâniCo</b>, e entrego resultado concreto para clientes reais. Meu foco é transformar a dor de um negócio em estratégia, e a estratégia em peça que entra no ar.</p>
+    </div>
+  </section>
+</div>
+
+<footer id="contato">
+  <div class="wrap">
+    <h2>Bora crescer <em>junto?</em></h2>
+    <div class="links mono">
+      <a href="https://instagram.com/jfeelix_">@jfeelix_</a>
+      <a href="mailto:Joao.vframalho@senacsp.edu.br">Joao.vframalho@senacsp.edu.br</a>
+      <a href="https://wa.me/5515998057042">(15) 99805-7042</a>
+    </div>
+    <p class="copy mono">João Victor Felix Ramalho · Sorocaba — SP · Portfólio 2026</p>
+  </div>
+</footer>
+
+<script src="portfolios.js"></script>
+<script>
+  (function () {
+    var lista = window.PORTFOLIOS || [];
+    var grid = document.getElementById("grid");
+    var noAr = lista.filter(function (p) { return p.status === "no-ar"; }).length;
+    document.getElementById("contagem").textContent = noAr + " no ar · " + (lista.length - noAr) + " em breve";
+
+    grid.innerHTML = lista.map(function (p, i) {
+      var on = p.status === "no-ar";
+      var n = String(i + 1).padStart(2, "0");
+      var tag = on ? '<span class="tag live mono">No ar</span>' : '<span class="tag wait mono">Em breve</span>';
+      var inner =
+        '<div><span class="num mono">' + n + '</span><h3>' + p.titulo + '</h3>' +
+        '<div class="sub mono">' + p.sub + '</div><p>' + p.desc + '</p></div>' +
+        '<div class="go">' + tag + (on ? '<i>↗</i>' : '') + '</div>';
+      return on
+        ? '<a class="card on" href="' + p.url + '">' + inner + '</a>'
+        : '<div class="card soon">' + inner + '</div>';
+    }).join("");
+  })();
+</script>
+</body>
+</html>
