@@ -4,7 +4,8 @@
    leem esta lista. Para ativar um portfólio novo, troque
    status: "em-breve" por status: "no-ar" e confira a url.
 ------------------------------------------------------------------- */
-window.HUB_URL = "https://jfeelix-hub.vercel.app"; // troque pelo endereço real do novo projeto
+
+window.HUB_URL = "https://jfeelix-hub.vercel.app";
 
 window.PORTFOLIOS = [
   {
@@ -12,7 +13,7 @@ window.PORTFOLIOS = [
     titulo: "Trabalhos",
     sub: "Atendimento · Estratégia · Campanhas",
     desc: "Cases com resultado real: Namata, Quarta-feira Delas, Esquenta da Copa, SSL e Café com Publis.",
-    url: "https://portif-lio-jfeelix.vercel.app", // portfólio antigo, mantido no ar
+    url: "https://portif-lio-jfeelix.vercel.app",
     status: "no-ar"
   },
   {
@@ -24,14 +25,13 @@ window.PORTFOLIOS = [
     status: "em-breve"
   },
   {
-    {
-  id: "designs",
-  titulo: "Designs",
-  sub: "Direção de arte · Design gráfico · Projetos autorais",
-  desc: "Projetos visuais, experimentações gráficas, identidades e direção de arte reunidos em um só lugar.",
-  url: "https://designs-jfeelix.vercel.app",
-  status: "disponivel"
-},
+    id: "designs",
+    titulo: "Designs",
+    sub: "Direção de arte · Design gráfico · Projetos autorais",
+    desc: "Projetos visuais, experimentações gráficas, identidades e direção de arte reunidos em um só lugar.",
+    url: "https://designs-jfeelix.vercel.app",
+    status: "no-ar"
+  },
   {
     id: "fotos",
     titulo: "Fotos",
