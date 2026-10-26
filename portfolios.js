@@ -24,13 +24,14 @@ window.PORTFOLIOS = [
     status: "em-breve"
   },
   {
-    id: "designs",
-    titulo: "Designs",
-    sub: "Direção de arte · Peças · Estampas",
-    desc: "Peças gráficas, posts, estampas DTF e estudos de design reunidos em um só lugar.",
-    url: "https://designs-jfeelix.vercel.app",
-    status: "em-breve"
-  },
+    {
+  id: "designs",
+  titulo: "Designs",
+  sub: "Direção de arte · Design gráfico · Projetos autorais",
+  desc: "Projetos visuais, experimentações gráficas, identidades e direção de arte reunidos em um só lugar.",
+  url: "https://designs-jfeelix.vercel.app",
+  status: "disponivel"
+},
   {
     id: "fotos",
     titulo: "Fotos",
