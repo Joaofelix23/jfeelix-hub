@@ -3,151 +3,358 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>João Felix · Portfólio</title>
+<title>João Felix · Portfólio 2026</title>
 <meta name="description" content="Atendimento, estratégia, branding, conteúdo e web. Escolha um portfólio para explorar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#f3ece0; --cream-2:#ebe2d2; --ink:#1e1a16; --muted:#6f655a;
-    --terra:#b5532f; --terra-d:#8f3f22; --line:rgba(30,26,22,.16);
-    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Outfit',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+    --terra:#e8582c; --ink:#0f0e0d; --dark:#161412; --dark2:#24201d;
+    --paper:#e5e7e3; --cream:#f0e7d0; --olive:#6d6b25; --peach:#f4c6b2; --sun:#f3d03e;
+    --f:'Inter Tight','Helvetica Neue',Arial,sans-serif;
+    --pad:28px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--f);background:var(--dark);color:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.35}
   a{color:inherit}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  img{display:block;max-width:100%}
+  .sm{font-size:13px;font-weight:700;line-height:1.25;letter-spacing:-.01em;text-transform:uppercase}
+  .xs{font-size:12.5px;line-height:1.4}
+  .big{font-weight:800;text-transform:uppercase;letter-spacing:-.055em;line-height:.84}
 
-  header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
-  header .brand{font-family:var(--serif);font-size:22px;font-weight:600;text-decoration:none}
-  header nav{display:flex;gap:22px}
-  header nav a{text-decoration:none;color:var(--muted)}
-  header nav a:hover{color:var(--terra)}
+  /* ---------- CAPA ---------- */
+  .cover{background:var(--terra);color:var(--ink);min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto;
+    padding:22px var(--pad) 0;overflow:hidden}
+  .cover-top{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start}
+  .cover-top nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
+  .cover-top nav a{text-decoration:none}
+  .cover-top nav a:hover{text-decoration:underline;text-underline-offset:3px}
+  .cover-top .r{text-align:right}
+  .mark{place-self:center;width:min(28vw,290px);height:auto;animation:spin 50s linear infinite}
+  .cover h1{margin:0 -.5vw 0;padding-bottom:2.2vw;line-height:.8;white-space:nowrap}
+  .cover h1 span{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:-.055em;font-size:17vw}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
-  .hero{padding:88px 0 72px}
-  .hero .mono{color:var(--terra);margin-bottom:22px}
-  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(52px,10vw,124px);line-height:.95;letter-spacing:-.02em}
-  .hero h1 em{color:var(--terra);font-weight:400}
-  .hero p{max-width:520px;margin-top:28px;font-size:19px;color:var(--muted)}
-  .hero p b{color:var(--ink);font-weight:500}
+  /* ---------- SEÇÕES ---------- */
+  .sec{padding:110px var(--pad)}
+  .sec-head{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:end;margin-bottom:56px}
+  .sec-head h2{font-size:clamp(56px,13vw,210px)}
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:10px}
+  .meta h4{margin-bottom:8px;color:#9a928a}
+  .meta p{font-size:13px;line-height:1.4}
 
-  .sec-title{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-top:1px solid var(--ink)}
-  .sec-title h2{font-family:var(--serif);font-weight:500;font-size:34px}
-  .sec-title span{color:var(--muted)}
+  /* ---------- BENTO DE PORTFÓLIOS ---------- */
+  .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+  .tile{grid-column:span var(--s,4);position:relative;overflow:hidden;border-radius:22px;padding:22px;min-height:320px;
+    display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--ink);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  a.tile:hover{transform:translateY(-6px) rotate(-.4deg)}
+  .tile .top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+  .tile .bot{position:relative;z-index:2}
+  .tile h3{font-size:clamp(44px,6.4vw,104px);font-weight:800;text-transform:uppercase;letter-spacing:-.055em;line-height:.82;margin-bottom:12px}
+  .tile .arrow{font-size:30px;line-height:1;transition:transform .3s}
+  a.tile:hover .arrow{transform:translate(5px,-5px)}
+  .pill{border:1.5px solid currentColor;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+  .pill.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-right:7px;vertical-align:1px}
+  .pill.soon{border-style:dashed;opacity:.65}
+  .c0{background:var(--terra)} .c1{background:var(--paper)} .c2{background:var(--olive);color:var(--paper)}
+  .c3{background:var(--peach)} .c4{background:var(--dark2);color:var(--paper)} .c5{background:var(--cream)}
+  .tile.soon-t{cursor:default}
+  .tile.soon-t h3,.tile.soon-t .xs{opacity:.55}
+  .tile.hasimg{color:#fff;background-size:cover;background-position:center}
+  .tile.hasimg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.05) 60%);z-index:1}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--line)}
-  .card{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:290px;padding:26px 24px;
-    border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;transition:background .25s,color .25s}
-  .card .num{color:var(--muted)}
-  .card h3{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1;margin:18px 0 8px}
-  .card .sub{color:var(--terra);margin-bottom:14px}
-  .card p{font-size:15px;color:var(--muted);max-width:30ch}
-  .card .go{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
-  .card .go i{font-style:normal;font-size:22px;transition:transform .25s}
-  .card.on:hover{background:var(--ink);color:var(--cream)}
-  .card.on:hover p,.card.on:hover .num{color:#cfc5b5}
-  .card.on:hover .sub{color:#e39a78}
-  .card.on:hover .go i{transform:translate(4px,-4px)}
-  .card.soon{cursor:default;background:var(--cream-2)}
-  .card.soon h3,.card.soon p{opacity:.55}
-  .tag{display:inline-block;padding:4px 10px;border:1px solid currentColor;border-radius:999px}
-  .tag.live{color:var(--terra)}
-  .tag.wait{color:var(--muted)}
+  /* ---------- CASE EM DESTAQUE ---------- */
+  .case{border-top:1px solid #2f2a26}
+  .case-main{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:stretch}
+  .case-info{display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+  .case-info h2{font-size:clamp(64px,12vw,190px)}
+  .case-info .meta{padding-bottom:0}
+  .rule{border:0;border-top:1px solid #4a433d;margin:6px 0 4px}
+  .case-info p.body{font-size:15px;max-width:52ch;color:#cfcac3}
+  .case-info p.note{font-size:12.5px;font-style:italic;color:#9a928a;margin-top:12px}
+  .btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:var(--paper);color:var(--ink);text-decoration:none;
+    border-radius:99px;padding:13px 22px;font-weight:700;font-size:14px;text-transform:uppercase;transition:background .2s}
+  .btn:hover{background:var(--terra)}
+  .shot{border-radius:22px;overflow:hidden;background:var(--dark2);min-height:420px}
+  .shot img{width:100%;height:100%;object-fit:cover}
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+  .shots .shot{min-height:0;aspect-ratio:1/1}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .stat{border-radius:22px;padding:24px;min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+  .stat b{font-size:clamp(40px,5.4vw,88px);white-space:nowrap;font-weight:800;letter-spacing:-.055em;line-height:.85}
+  .stat:nth-child(1){background:var(--terra);color:var(--ink)}
+  .stat:nth-child(2){background:var(--peach);color:var(--ink)}
+  .stat:nth-child(3){background:var(--olive);color:var(--paper)}
 
-  .about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;padding:88px 0}
-  .about h2{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.05}
-  .about h2 em{color:var(--terra)}
-  .about p{font-size:18px;color:var(--muted);margin-bottom:16px}
-  .about p b{color:var(--ink);font-weight:500}
+  /* ---------- SOBRE ---------- */
+  .about{background:var(--paper);color:var(--ink);display:grid;grid-template-columns:1.1fr .9fr;position:relative}
+  .about-l{padding:100px 110px 70px var(--pad)}
+  .about-txt a{overflow-wrap:anywhere}
+  .about-l h2{font-size:clamp(72px,12vw,200px);margin-bottom:56px}
+  .about-txt{display:grid;grid-template-columns:1.6fr 1fr;gap:32px}
+  .about-txt p{font-size:15.5px;margin-bottom:14px;max-width:46ch}
+  .about-txt h4{margin-bottom:8px}
+  .about-txt a{text-decoration:none;border-bottom:1.5px solid var(--ink)}
+  .about-txt .xs{margin-bottom:3px}
+  .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px;padding-top:26px;border-top:1px solid #8b8d89}
+  .cols h4{margin-bottom:12px}
+  .cols p{font-size:12.5px;line-height:1.4;margin-bottom:9px}
+  .cols p b{display:block;font-size:12.5px}
+  .about-r{background:var(--dark);padding:20px;position:relative}
+  .photo{position:relative;border-radius:22px;overflow:hidden;background:var(--dark2);height:100%;min-height:560px;
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;color:#8e867e}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+  .sticker{position:absolute;left:-84px;top:32%;width:168px;height:168px;z-index:5;animation:spin 18s linear infinite}
 
-  footer{background:var(--ink);color:var(--cream);padding:72px 0 40px}
-  footer h2{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7vw,84px);line-height:1}
-  footer h2 em{color:#e39a78}
-  .links{display:flex;flex-wrap:wrap;gap:14px 32px;margin-top:32px}
-  .links a{text-decoration:none;border-bottom:1px solid rgba(243,236,224,.3);padding-bottom:3px}
-  .links a:hover{color:#e39a78;border-color:#e39a78}
-  .copy{margin-top:56px;color:#9d9384}
+  /* ---------- RODAPÉ ---------- */
+  footer{background:var(--terra);color:var(--ink);padding:100px var(--pad) 26px}
+  footer h2{font-size:clamp(64px,14vw,230px)}
+  .flinks{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:44px}
+  .flinks a{text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px}
+  .flinks a:hover{opacity:.6}
+  .fbottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:90px}
 
-  @media(max-width:860px){
-    .grid{grid-template-columns:repeat(2,1fr)}
-    .about{grid-template-columns:1fr;gap:20px;padding:64px 0}
+  /* ---------- RESPONSIVO ---------- */
+  @media(max-width:1000px){
+    .tile{grid-column:span 6}
+    .sec-head,.case-main,.about{grid-template-columns:1fr}
+    .about-l{padding:80px var(--pad) 60px}
+    .about-r{padding:14px}
+    .photo{min-height:440px}
+    .sticker{left:auto;right:22px;top:-70px;width:140px;height:140px}
+    .shots{grid-template-columns:repeat(2,1fr)}
+    .cols{grid-template-columns:repeat(2,1fr)}
   }
-  @media(max-width:560px){
-    .grid{grid-template-columns:1fr}
-    .card{min-height:230px}
-    header nav{display:none}
-    .hero{padding:56px 0 48px}
+  @media(max-width:640px){
+    :root{--pad:18px}
+    .sec{padding:72px var(--pad)}
+    .tile{grid-column:span 12;min-height:260px}
+    .stats{grid-template-columns:1fr}
+    .stat{min-height:170px}
+    .meta{grid-template-columns:repeat(2,1fr)}
+    .about-txt{grid-template-columns:1fr}
+    .cover-top{grid-template-columns:1fr 1fr}
+    .cover-top nav{display:none}
+    .mark{width:46vw}
+    .cover h1{padding-bottom:4vw}
   }
+  @media(prefers-reduced-motion:reduce){.mark,.sticker{animation:none}html{scroll-behavior:auto}a.tile:hover{transform:none}}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <a class="brand" href="#">João Felix</a>
-    <nav class="mono">
+<!-- ============ CAPA ============ -->
+<header class="cover" id="topo">
+  <div class="cover-top sm">
+    <div>João Felix<br>Atendimento · Estratégia · Web</div>
+    <nav>
       <a href="#portfolios">Portfólios</a>
+      <a href="#case">Case</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
-  </header>
-
-  <section class="hero">
-    <p class="mono">Portfólio · 2026 · Sorocaba — SP</p>
-    <h1>Publicidade que <em>sai do papel</em></h1>
-    <p>Do atendimento à direção de arte e ao código. <b>Escolha por onde começar:</b> cada portfólio abaixo mostra um lado do meu trabalho.</p>
-  </section>
-
-  <section id="portfolios">
-    <div class="sec-title"><h2>Portfólios</h2><span class="mono" id="contagem"></span></div>
-    <div class="grid" id="grid"></div>
-  </section>
-
-  <section id="sobre" class="about">
-    <h2>Estratégia, marca e <em>execução</em></h2>
-    <div>
-      <p>Atuo em toda a régua de uma campanha: <b>prospecção e atendimento</b>, estratégia, direção de arte, copy e desenvolvimento web.</p>
-      <p>Tenho marca própria, a <b>orgâniCo</b>, e entrego resultado concreto para clientes reais. Meu foco é transformar a dor de um negócio em estratégia, e a estratégia em peça que entra no ar.</p>
+    <div class="r">
+      Instagram: @jfeelix_<br>
+      Sorocaba — SP<br>
+      2026
     </div>
-  </section>
-</div>
+  </div>
 
+  <!-- símbolo próprio: oito pétalas -->
+  <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="#0f0e0d">
+      <ellipse cx="100" cy="42" rx="15" ry="42"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(45 100 100)"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(90 100 100)"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(135 100 100)"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(180 100 100)"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(225 100 100)"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(270 100 100)"/>
+      <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(315 100 100)"/>
+    </g>
+    <circle cx="100" cy="100" r="17" fill="#e8582c"/>
+  </svg>
+
+  <h1><span id="fit">Portfólio</span></h1>
+</header>
+
+<!-- ============ PORTFÓLIOS ============ -->
+<section class="sec" id="portfolios">
+  <div class="sec-head">
+    <h2 class="big">Escolha<br>um lado</h2>
+    <div class="meta">
+      <div><h4 class="sm">Serviços</h4><p>Atendimento<br>Estratégia<br>Branding<br>Conteúdo<br>Web</p></div>
+      <div><h4 class="sm">Portfólios</h4><p id="contagem"></p></div>
+      <div><h4 class="sm">Ano</h4><p>2026</p></div>
+    </div>
+  </div>
+  <div class="bento" id="bento"></div>
+</section>
+
+<!-- ============ CASE EM DESTAQUE ============ -->
+<section class="sec case" id="case">
+  <div class="case-main">
+    <div class="case-info">
+      <h2 class="big">Namata</h2>
+      <div>
+        <div class="meta">
+          <div><h4 class="sm">Serviços</h4><p>Atendimento<br>Estratégia<br>Vídeo e site</p></div>
+          <div><h4 class="sm">Segmento</h4><p>Bar e<br>restaurante</p></div>
+          <div><h4 class="sm">Ano</h4><p>2025–2026</p></div>
+        </div>
+        <hr class="rule">
+        <p class="body">Prospectei o Namata para a Jaguaretê&amp;Co. e conduzi a relação com o cliente do início ao fim. A dor: casas vazias de terça a quinta. A resposta: duas campanhas com identidade própria, a Quarta-feira Delas e o Esquenta da Copa, mais um site da Copa e um calendário editorial no Notion.</p>
+        <p class="note">Cliente real, projeto da agência Jaguaretê&amp;Co.</p>
+        <a class="btn" href="https://portif-lio-jfeelix.vercel.app">Ver case completo <span>↗</span></a>
+      </div>
+    </div>
+    <div class="shot"><img src="https://portif-lio-jfeelix.vercel.app/img/img-05.png" alt="Peça da campanha Quarta-feira Delas" loading="lazy"></div>
+  </div>
+
+  <div class="shots">
+    <div class="shot"><img src="https://portif-lio-jfeelix.vercel.app/img/img-06.jpg" alt="Peça Uma noite só delas" loading="lazy"></div>
+    <div class="shot"><img src="https://portif-lio-jfeelix.vercel.app/img/img-07.jpg" alt="Carrossel Esquenta da Copa" loading="lazy"></div>
+    <div class="shot"><img src="https://portif-lio-jfeelix.vercel.app/img/img-08.jpg" alt="Stories Esquenta da Copa" loading="lazy"></div>
+    <div class="shot"><img src="https://portif-lio-jfeelix.vercel.app/img/img-09.jpg" alt="Site da Copa do Namata" loading="lazy"></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>R$13,5 mil</b><span class="sm">Faturamento na primeira Quarta-feira Delas (quarta comum: R$0 a R$1.500)</span></div>
+    <div class="stat"><b>65%</b><span class="sm">Clientes novos, que nunca tinham ido ao Namata</span></div>
+    <div class="stat"><b>R$30 mil+</b><span class="sm">Por dia de jogo do Brasil, após o Esquenta da Copa</span></div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="about" id="sobre">
+  <div class="about-l">
+    <h2 class="big">Sobre</h2>
+    <div class="about-txt">
+      <div>
+        <p>Oi, eu sou o João. Atuo em toda a régua de uma campanha: prospecção e atendimento, estratégia, direção de arte, copy e desenvolvimento web.</p>
+        <p>Antes da publicidade, passei anos na gestão de bares e na operação de eventos de grande público. Isso me ensinou a resolver problema real, com equipe, prazo e pressão.</p>
+        <p>Hoje tenho a marca própria orgâniCo e transformo a dor de um negócio em estratégia, e a estratégia em peça que entra no ar.</p>
+      </div>
+      <div>
+        <h4 class="sm">Contato</h4>
+        <p class="xs"><a href="mailto:Joao.vframalho@senacsp.edu.br">Joao.vframalho@senacsp.edu.br</a></p>
+        <p class="xs"><a href="https://instagram.com/jfeelix_">@jfeelix_</a></p>
+        <p class="xs"><a href="https://wa.me/5515998057042">(15) 99805-7042</a></p>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h4 class="sm">Experiência</h4>
+        <p><b>Gestão de bares</b>De chefe de bar a gerente · desde 2018</p>
+        <p><b>Festival Sorofolia</b>Operação do bar · 2024 a 2026</p>
+        <p><b>Rodeio Lucky Friends</b>Produção e riders · 2026</p>
+        <p><b>Jaguaretê&amp;Co.</b>Atendimento · agência de alunos</p>
+      </div>
+      <div>
+        <h4 class="sm">Formação</h4>
+        <p><b>Técnico em Publicidade</b>SENAC · 2025–2026</p>
+        <p><b>Tecnologia em Marketing</b>UNINOVE · 2026–atual</p>
+        <p><b>Cursos</b>Lightroom, Photoshop e Pacote Office</p>
+      </div>
+      <div>
+        <h4 class="sm">Serviços</h4>
+        <p>Atendimento e prospecção<br>Estratégia de campanha<br>Branding e identidade<br>Copywriting<br>Social media<br>Direção de arte<br>Roteiro e podcast<br>Web: HTML, CSS e JS</p>
+      </div>
+      <div>
+        <h4 class="sm">Idiomas</h4>
+        <p><b>Português</b>nativo</p>
+        <p><b>Inglês</b>básico</p>
+        <p><b>Espanhol</b>básico</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-r">
+    <svg class="sticker" viewBox="0 0 160 160" aria-label="Aberto para projetos">
+      <circle cx="80" cy="80" r="78" fill="#f3d03e" stroke="#0f0e0d" stroke-width="2"/>
+      <defs><path id="circ" d="M 80,80 m -57,0 a 57,57 0 1,1 114,0 a 57,57 0 1,1 -114,0"/></defs>
+      <text font-family="Inter Tight, Arial, sans-serif" font-weight="800" font-size="12.5" fill="#0f0e0d" letter-spacing="1">
+        <textPath href="#circ" textLength="352" lengthAdjust="spacing">ABERTO PARA PROJETOS · ABERTO PARA PROJETOS ·</textPath>
+      </text>
+      <g fill="#0f0e0d" transform="translate(80 80) scale(.2) translate(-100 -100)">
+        <ellipse cx="100" cy="42" rx="15" ry="42"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(45 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(90 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(135 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(180 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(225 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(270 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(315 100 100)"/>
+      </g>
+    </svg>
+    <div class="photo">
+      <span class="sm">Sua foto aqui<br><span style="font-weight:400;text-transform:none">salve como img/joao.jpg</span></span>
+      <img src="img/joao.jpg" alt="João Felix" onerror="this.remove()">
+    </div>
+  </div>
+</section>
+
+<!-- ============ RODAPÉ ============ -->
 <footer id="contato">
-  <div class="wrap">
-    <h2>Bora crescer <em>junto?</em></h2>
-    <div class="links mono">
-      <a href="https://instagram.com/jfeelix_">@jfeelix_</a>
-      <a href="mailto:Joao.vframalho@senacsp.edu.br">Joao.vframalho@senacsp.edu.br</a>
-      <a href="https://wa.me/5515998057042">(15) 99805-7042</a>
-    </div>
-    <p class="copy mono">João Victor Felix Ramalho · Sorocaba — SP · Portfólio 2026</p>
+  <h2 class="big">Bora crescer<br>junto?</h2>
+  <div class="flinks sm">
+    <a href="mailto:Joao.vframalho@senacsp.edu.br">E-mail</a>
+    <a href="https://instagram.com/jfeelix_">Instagram</a>
+    <a href="https://wa.me/5515998057042">WhatsApp</a>
+    <a href="#topo">Voltar ao topo ↑</a>
+  </div>
+  <div class="fbottom sm">
+    <span>João Victor Felix Ramalho</span>
+    <span>Sorocaba — SP</span>
+    <span>Portfólio 2026</span>
   </div>
 </footer>
 
 <script src="portfolios.js"></script>
 <script>
-  (function () {
-    var lista = window.PORTFOLIOS || [];
-    var grid = document.getElementById("grid");
-    var noAr = lista.filter(function (p) { return p.status === "no-ar"; }).length;
-    document.getElementById("contagem").textContent = noAr + " no ar · " + (lista.length - noAr) + " em breve";
+(function () {
+  /* ---- título da capa ocupa a largura inteira ---- */
+  function fit() {
+    var s = document.getElementById("fit");
+    var box = s.parentElement;
+    s.style.fontSize = "100px";
+    var w = s.getBoundingClientRect().width;
+    var alvo = box.clientWidth * 0.985;
+    if (w > 0) s.style.fontSize = (100 * alvo / w) + "px";
+  }
+  fit();
+  window.addEventListener("resize", fit);
+  window.addEventListener("load", fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 
-    grid.innerHTML = lista.map(function (p, i) {
-      var on = p.status === "no-ar";
-      var n = String(i + 1).padStart(2, "0");
-      var tag = on ? '<span class="tag live mono">No ar</span>' : '<span class="tag wait mono">Em breve</span>';
-      var inner =
-        '<div><span class="num mono">' + n + '</span><h3>' + p.titulo + '</h3>' +
-        '<div class="sub mono">' + p.sub + '</div><p>' + p.desc + '</p></div>' +
-        '<div class="go">' + tag + (on ? '<i>↗</i>' : '') + '</div>';
-      return on
-        ? '<a class="card on" href="' + p.url + '">' + inner + '</a>'
-        : '<div class="card soon">' + inner + '</div>';
-    }).join("");
-  })();
+  /* ---- cards a partir do portfolios.js ---- */
+  var lista = window.PORTFOLIOS || [];
+  var spans = [7, 5, 4, 4, 4, 12];
+  var noAr = lista.filter(function (p) { return p.status === "no-ar"; }).length;
+  document.getElementById("contagem").innerHTML =
+    noAr + " no ar<br>" + (lista.length - noAr) + " em breve";
+
+  document.getElementById("bento").innerHTML = lista.map(function (p, i) {
+    var on = p.status === "no-ar";
+    var n = String(i + 1).padStart(2, "0");
+    var cls = "tile c" + (i % 6) + (on ? "" : " soon-t") + (p.img ? " hasimg" : "");
+    var st = "--s:" + spans[i % spans.length] + ";" + (p.img ? "background-image:url('" + p.img + "');" : "");
+    var inner =
+      '<div class="top"><span class="sm">' + n + '</span>' +
+      '<span class="pill ' + (on ? "live" : "soon") + '">' + (on ? "No ar" : "Em breve") + '</span></div>' +
+      '<div class="bot"><h3>' + p.titulo + '</h3>' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px">' +
+      '<div><div class="sm">' + p.sub + '</div><p class="xs" style="margin-top:6px;max-width:34ch">' + p.desc + '</p></div>' +
+      (on ? '<span class="arrow">↗</span>' : '') + '</div></div>';
+    return on
+      ? '<a class="' + cls + '" style="' + st + '" href="' + p.url + '">' + inner + '</a>'
+      : '<div class="' + cls + '" style="' + st + '">' + inner + '</div>';
+  }).join("");
+})();
 </script>
 </body>
 </html>
