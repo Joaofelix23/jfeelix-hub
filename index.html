@@ -11,7 +11,7 @@
 <script>document.documentElement.className += " js";</script>
 <style>
   :root{
-    --terra:#e8582c; --ink:#0f0e0d; --dark:#161412; --dark2:#24201d;
+    --vinho:#7a1f2e; --terra:#e8582c; --ink:#0f0e0d; --dark:#161412; --dark2:#24201d;
     --paper:#e5e7e3; --cream:#f0e7d0; --olive:#6d6b25; --peach:#f4c6b2;
     --f:'Inter Tight','Helvetica Neue',Arial,sans-serif;
     --ease:cubic-bezier(.16,.84,.24,1);
@@ -92,6 +92,7 @@
   .pill.soon{border-style:dashed;opacity:.65}
   .c0{background:var(--terra)} .c1{background:var(--paper)} .c2{background:var(--olive);color:var(--paper)}
   .c3{background:var(--peach)} .c4{background:var(--dark2);color:var(--paper)} .c5{background:var(--cream)}
+  .cv{background:var(--vinho);color:var(--peach)}
   .tile.soon-t{cursor:default}
   .tile.soon-t h3,.tile.soon-t .xs{opacity:.55}
   .tile.hasimg{color:#fff;background-size:cover;background-position:center}
@@ -268,15 +269,34 @@
   window.addEventListener("load", fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 
-  /* ---------- blocos de portfólio, a partir do portfolios.js ---------- */
-  var lista = window.PORTFOLIOS || [];
+  /* ---------- ordem, nome e cor dos blocos (Eventos foi unido a Trabalhos) ---------- */
+  var ORDEM = ["trabalhos", "designs", "fotos", "marca", "web"];
+  var COR = { trabalhos: "cv", designs: "c2", fotos: "c3", marca: "c1", web: "c5" };
+  var TEXTO = {
+    trabalhos: {
+      titulo: "Projetos & Eventos",
+      sub: "Atendimento · Campanhas · Operação",
+      desc: "Campanhas, ações e eventos conduzidos do briefing à execução. Cases com resultado real: Namata, Quarta-feira Delas, Esquenta da Copa, SSL e Café com Publis."
+    }
+  };
+  var lista = [];
+  ORDEM.forEach(function (id) {
+    (window.PORTFOLIOS || []).forEach(function (p) {
+      if (p.id !== id) return;
+      var c = {}; for (var k in p) c[k] = p[k];
+      var t = TEXTO[id]; if (t) for (var k2 in t) c[k2] = t[k2];
+      lista.push(c);
+    });
+  });
   var total = lista.length;
+
+  /* ---------- blocos de portfólio, a partir do portfolios.js ---------- */
   document.getElementById("bento").innerHTML = lista.map(function (p, i) {
     var on = p.status === "no-ar";
     var n = String(i + 1).padStart(2, "0");
     // primeiro bloco ocupa a linha inteira; o último também, se sobrar um sozinho
     var largo = (i === 0) || (i === total - 1 && (total - 1) % 2 === 1);
-    var cls = "tile c" + (i % 6) + (on ? "" : " soon-t") + (p.img ? " hasimg" : "");
+    var cls = "tile " + (COR[p.id] || "c" + (i % 6)) + (on ? "" : " soon-t") + (p.img ? " hasimg" : "");
     var st = "--s:" + (largo ? 2 : 1) + ";--d:" + ((i % 2) * 0.09).toFixed(2) + "s;" +
              (p.img ? "background-image:url('" + p.img + "');" : "");
     var inner =
