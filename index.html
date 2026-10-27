@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -9,156 +10,618 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&display=swap" rel="stylesheet">
 <script>document.documentElement.className += " js";</script>
+
 <style>
-  :root{
-    --vinho:#7a1f2e; --terra:#e8582c; --ink:#0f0e0d; --dark:#161412; --dark2:#24201d;
-    --paper:#e5e7e3; --cream:#f0e7d0; --olive:#6d6b25; --peach:#f4c6b2;
-    --f:'Inter Tight','Helvetica Neue',Arial,sans-serif;
-    --ease:cubic-bezier(.16,.84,.24,1);
-    --pad:28px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--f);background:var(--dark);color:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.35;overflow-x:hidden}
-  a{color:inherit}
-  img{display:block;max-width:100%}
-  .sm{font-size:13px;font-weight:700;line-height:1.25;letter-spacing:-.01em;text-transform:uppercase}
-  .xs{font-size:12.5px;line-height:1.4}
-  .big{font-weight:800;text-transform:uppercase;letter-spacing:-.055em;line-height:.84}
+  :root {
+    --vinho: #3b1f1b;
+    --terra: #aa2e28;
+    --ink: #0f0e0d;
+    --dark: #161412;
+    --dark2: #3b1f1b;
+    --paper: #e6d9d4;
+    --cream: #fefdd7;
+    --olive: #b26c3b;
+    --peach: #e6d9d4;
 
-  /* ---------- ROLAGEM SUAVE (Lenis) ---------- */
-  html.lenis,html.lenis body{height:auto}
-  .lenis.lenis-smooth{scroll-behavior:auto!important}
-  .lenis.lenis-stopped{overflow:hidden}
-
-  /* ---------- BARRA DE PROGRESSO ---------- */
-  #bar{position:fixed;top:0;left:0;right:0;height:4px;background:#fff;mix-blend-mode:difference;transform:scaleX(0);transform-origin:0 50%;z-index:50;pointer-events:none}
-
-  /* ---------- ANIMAÇÕES DE ENTRADA ---------- */
-  .js [data-r]{opacity:0;transform:translate3d(0,40px,0);
-    transition:opacity .9s var(--ease) var(--d,0s),transform 1.2s var(--ease) var(--d,0s)}
-  .js [data-r].in{opacity:1;transform:none}
-  .line{display:block;overflow:hidden;padding:.14em 0 .1em;margin:-.14em 0 -.1em}
-  .line>span{display:block}
-  .js .split .line>span{transform:translate3d(0,112%,0);transition:transform 1.25s var(--ease) var(--d,0s)}
-  .js .split.in .line>span{transform:none}
-
-  /* ---------- CAPA ---------- */
-  .cover{background:var(--terra);color:var(--ink);min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr auto;
-    padding:22px var(--pad) 0;overflow:hidden}
-  .cover-top{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start}
-  .cover-top nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
-  .cover-top nav a{text-decoration:none}
-  .cover-top nav a:hover{text-decoration:underline;text-underline-offset:3px}
-  .cover-top .r{text-align:right}
-  .mark-wrap{place-self:center;width:min(28vw,290px);will-change:transform,opacity}
-  .mark{display:block;width:100%;height:auto;animation:spin 50s linear infinite}
-  .js .mark-wrap{opacity:0;scale:.35}
-  .js.ready .mark-wrap{opacity:1;scale:1;transition:opacity 1s ease .25s,scale 1.6s var(--ease) .25s}
-  .js.ready.settled .mark-wrap{transition:none}
-  .cover h1{margin:0 -.5vw 0;padding-bottom:2.2vw;line-height:.8;white-space:nowrap;will-change:transform}
-  .cover h1 span{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:-.055em;font-size:17vw}
-  .js .cover h1 span{transform:translate3d(0,108%,0)}
-  .js.ready .cover h1 span{transform:none;transition:transform 1.5s var(--ease) .1s}
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  /* ---------- SOBRE + PORTFÓLIOS, LADO A LADO ---------- */
-  .sec{padding:28px var(--pad) 110px}
-  .dupla{display:grid;grid-template-columns:minmax(320px,.78fr) 1.6fr;gap:14px;align-items:stretch}
-
-  .sobre{align-self:start;position:sticky;top:24px;background:var(--paper);color:var(--ink);border-radius:22px;padding:28px}
-  .sobre h2{font-size:clamp(56px,7.4vw,124px);margin-bottom:26px}
-  .sobre .txt{font-size:15px;line-height:1.5;margin-bottom:14px}
-  .sobre .bloco{border-top:1px solid #8b8d89;padding-top:14px;margin-top:18px}
-  .sobre h4{margin-bottom:10px}
-  .sobre .item{font-size:12.5px;line-height:1.4;margin-bottom:8px}
-  .sobre .item b{display:block}
-  .sobre .contato a{display:inline-block;text-decoration:none;border-bottom:1.5px solid var(--ink);overflow-wrap:anywhere}
-  .sobre .contato p{margin-bottom:5px}
-
-  /* ---------- BLOCOS DE PORTFÓLIO ---------- */
-  .bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(300px,1fr);gap:14px}
-  .tile{grid-column:span var(--s,1);position:relative;overflow:hidden;border-radius:22px;padding:22px;
-    display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--ink);
-    transition:transform .45s var(--ease)}
-  a.tile:hover{transform:translateY(-6px) rotate(-.4deg)}
-  .tile .top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
-  .tile .bot{position:relative;z-index:2}
-  .tile h3{font-size:clamp(34px,4.6vw,76px);font-weight:800;text-transform:uppercase;letter-spacing:-.055em;line-height:.82;margin-bottom:12px}
-  .tile .arrow{font-size:30px;line-height:1;transition:transform .3s}
-  a.tile:hover .arrow{transform:translate(5px,-5px)}
-  .pill{border:1.5px solid currentColor;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
-  .pill.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-right:7px;vertical-align:1px}
-  .pill.soon{border-style:dashed;opacity:.65}
-  .c0{background:var(--terra)} .c1{background:var(--paper)} .c2{background:var(--olive);color:var(--paper)}
-  .c3{background:var(--peach)} .c4{background:var(--dark2);color:var(--paper)} .c5{background:var(--cream)}
-  .cv{background:var(--vinho);color:var(--peach)}
-  .tile.soon-t{cursor:default}
-  .tile.soon-t h3,.tile.soon-t .xs{opacity:.55}
-  .tile.hasimg{color:#fff;background-size:cover;background-position:center}
-  .tile.hasimg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.05) 60%);z-index:1}
-
-  /* ---------- FAIXA EM MOVIMENTO ---------- */
-  .marquee{background:var(--paper);color:var(--ink);overflow:hidden;padding:28px 0}
-  .mq-track{display:flex;align-items:center;width:max-content;white-space:nowrap;will-change:transform;
-    font-size:clamp(44px,8vw,124px);font-weight:800;text-transform:uppercase;letter-spacing:-.055em;line-height:1}
-  .mq-track span{padding:0 .22em}
-  .mq-track i{display:block;width:.2em;height:.2em;border-radius:50%;background:var(--terra)}
-
-  /* ---------- RODAPÉ ---------- */
-  footer{background:var(--terra);color:var(--ink);padding:100px var(--pad) 26px}
-  footer h2{font-size:clamp(64px,14vw,230px)}
-  .flinks{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:44px}
-  .flinks a{text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px}
-  .flinks a:hover{opacity:.6}
-  .fbottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:90px}
-
-  /* ---------- RESPONSIVO ---------- */
-  @media(max-height:760px){
-    .sobre{position:static}
-  }
-  @media(max-width:1000px){
-    .dupla{grid-template-columns:1fr}
-    .sobre{position:static}
-    .sobre h2{font-size:clamp(64px,16vw,140px)}
-    .tile h3{font-size:clamp(40px,8vw,76px)}
-  }
-  @media(max-width:640px){
-    :root{--pad:18px}
-    .sec{padding:18px var(--pad) 72px}
-    .sobre{padding:22px}
-    .bento{grid-template-columns:1fr;grid-auto-rows:minmax(260px,auto)}
-    .tile{grid-column:1 / -1}
-    .cover-top{grid-template-columns:1fr 1fr}
-    .cover-top nav{display:none}
-    .mark-wrap{width:46vw}
-    .cover h1{padding-bottom:4vw}
+    --f: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+    --ease: cubic-bezier(.16,.84,.24,1);
+    --pad: 28px;
   }
 
-  /* ---------- MOVIMENTO REDUZIDO ---------- */
-  @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .mark{animation:none}
-    a.tile:hover{transform:none}
-    .js [data-r],.js .split .line>span,.js .mark-wrap,.js .cover h1 span{
-      opacity:1!important;transform:none!important;scale:1!important;transition:none!important}
-    #bar{display:none}
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--f);
+    background: var(--dark);
+    color: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.35;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .sm {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+
+  .xs {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+
+  .big {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.055em;
+    line-height: .84;
+  }
+
+  /* ROLAGEM SUAVE */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  /* BARRA DE PROGRESSO */
+  #bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #fff;
+    mix-blend-mode: difference;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  /* ANIMAÇÕES DE ENTRADA */
+  .js [data-r] {
+    opacity: 0;
+    transform: translate3d(0,40px,0);
+    transition:
+      opacity .9s var(--ease) var(--d,0s),
+      transform 1.2s var(--ease) var(--d,0s);
+  }
+
+  .js [data-r].in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .line {
+    display: block;
+    overflow: hidden;
+    padding: .14em 0 .1em;
+    margin: -.14em 0 -.1em;
+  }
+
+  .line > span {
+    display: block;
+  }
+
+  .js .split .line > span {
+    transform: translate3d(0,112%,0);
+    transition: transform 1.25s var(--ease) var(--d,0s);
+  }
+
+  .js .split.in .line > span {
+    transform: none;
+  }
+
+  /* CAPA */
+  .cover {
+    background: var(--terra);
+    color: var(--ink);
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+    grid-template-rows: auto 1fr auto;
+    padding: 22px var(--pad) 0;
+    overflow: hidden;
+  }
+
+  .cover-top {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .cover-top nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-top nav a {
+    text-decoration: none;
+  }
+
+  .cover-top nav a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .cover-top .r {
+    text-align: right;
+  }
+
+  .mark-wrap {
+    place-self: center;
+    width: min(28vw,290px);
+    will-change: transform,opacity;
+  }
+
+  .mark {
+    display: block;
+    width: 100%;
+    height: auto;
+    animation: spin 50s linear infinite;
+  }
+
+  .js .mark-wrap {
+    opacity: 0;
+    scale: .35;
+  }
+
+  .js.ready .mark-wrap {
+    opacity: 1;
+    scale: 1;
+    transition: opacity 1s ease .25s, scale 1.6s var(--ease) .25s;
+  }
+
+  .js.ready.settled .mark-wrap {
+    transition: none;
+  }
+
+  .cover h1 {
+    margin: 0 -.5vw 0;
+    padding-bottom: 2.2vw;
+    line-height: .8;
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .cover h1 span {
+    display: inline-block;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.055em;
+    font-size: 17vw;
+  }
+
+  .js .cover h1 span {
+    transform: translate3d(0,108%,0);
+  }
+
+  .js.ready .cover h1 span {
+    transform: none;
+    transition: transform 1.5s var(--ease) .1s;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* SOBRE + PORTFÓLIOS */
+  .sec {
+    padding: 28px var(--pad) 110px;
+  }
+
+  .dupla {
+    display: grid;
+    grid-template-columns: minmax(320px,.78fr) 1.6fr;
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .sobre {
+    align-self: start;
+    position: sticky;
+    top: 24px;
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: 22px;
+    padding: 28px;
+  }
+
+  .sobre h2 {
+    font-size: clamp(56px,7.4vw,124px);
+    margin-bottom: 26px;
+  }
+
+  .sobre .txt {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .sobre .bloco {
+    border-top: 1px solid #8b8d89;
+    padding-top: 14px;
+    margin-top: 18px;
+  }
+
+  .sobre h4 {
+    margin-bottom: 10px;
+  }
+
+  .sobre .item {
+    font-size: 12.5px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .sobre .item b {
+    display: block;
+  }
+
+  .sobre .contato a {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  .sobre .contato p {
+    margin-bottom: 5px;
+  }
+
+  /* BLOCOS DE PORTFÓLIO */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-auto-rows: minmax(300px,1fr);
+    gap: 14px;
+  }
+
+  .tile {
+    grid-column: span var(--s,1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .45s var(--ease);
+  }
+
+  a.tile:hover {
+    transform: translateY(-6px) rotate(-.4deg);
+  }
+
+  .tile .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tile .bot {
+    position: relative;
+    z-index: 2;
+  }
+
+  .tile h3 {
+    font-size: clamp(34px,4.6vw,76px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.055em;
+    line-height: .82;
+    margin-bottom: 12px;
+  }
+
+  .tile .arrow {
+    font-size: 30px;
+    line-height: 1;
+    transition: transform .3s;
+  }
+
+  a.tile:hover .arrow {
+    transform: translate(5px,-5px);
+  }
+
+  .pill {
+    border: 1.5px solid currentColor;
+    border-radius: 99px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .01em;
+  }
+
+  .pill.live::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 7px;
+    vertical-align: 1px;
+  }
+
+  .pill.soon {
+    border-style: dashed;
+    opacity: .65;
+  }
+
+  /* PALETA MACKA APLICADA AOS BLOCOS */
+  .c0 {
+    background: var(--terra);
+  }
+
+  .c1 {
+    background: var(--cream);
+  }
+
+  .c2 {
+    background: var(--olive);
+    color: var(--ink);
+  }
+
+  .c3 {
+    background: var(--paper);
+  }
+
+  .c4 {
+    background: var(--dark2);
+    color: var(--cream);
+  }
+
+  .c5 {
+    background: var(--cream);
+  }
+
+  .cv {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  .tile.soon-t {
+    cursor: default;
+  }
+
+  .tile.soon-t h3,
+  .tile.soon-t .xs {
+    opacity: .55;
+  }
+
+  .tile.hasimg {
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .tile.hasimg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.05) 60%);
+    z-index: 1;
+  }
+
+  /* FAIXA EM MOVIMENTO */
+  .marquee {
+    background: var(--paper);
+    color: var(--ink);
+    overflow: hidden;
+    padding: 28px 0;
+  }
+
+  .mq-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    white-space: nowrap;
+    will-change: transform;
+    font-size: clamp(44px,8vw,124px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.055em;
+    line-height: 1;
+  }
+
+  .mq-track span {
+    padding: 0 .22em;
+  }
+
+  .mq-track i {
+    display: block;
+    width: .2em;
+    height: .2em;
+    border-radius: 50%;
+    background: var(--terra);
+  }
+
+  /* RODAPÉ */
+  footer {
+    background: var(--terra);
+    color: var(--ink);
+    padding: 100px var(--pad) 26px;
+  }
+
+  footer h2 {
+    font-size: clamp(64px,14vw,230px);
+  }
+
+  .flinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 36px;
+    margin-top: 44px;
+  }
+
+  .flinks a {
+    text-decoration: none;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 2px;
+  }
+
+  .flinks a:hover {
+    opacity: .6;
+  }
+
+  .fbottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 90px;
+  }
+
+  /* RESPONSIVO */
+  @media(max-height:760px) {
+    .sobre {
+      position: static;
+    }
+  }
+
+  @media(max-width:1000px) {
+    .dupla {
+      grid-template-columns: 1fr;
+    }
+
+    .sobre {
+      position: static;
+    }
+
+    .sobre h2 {
+      font-size: clamp(64px,16vw,140px);
+    }
+
+    .tile h3 {
+      font-size: clamp(40px,8vw,76px);
+    }
+  }
+
+  @media(max-width:640px) {
+    :root {
+      --pad: 18px;
+    }
+
+    .sec {
+      padding: 18px var(--pad) 72px;
+    }
+
+    .sobre {
+      padding: 22px;
+    }
+
+    .bento {
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(260px,auto);
+    }
+
+    .tile {
+      grid-column: 1 / -1;
+    }
+
+    .cover-top {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cover-top nav {
+      display: none;
+    }
+
+    .mark-wrap {
+      width: 46vw;
+    }
+
+    .cover h1 {
+      padding-bottom: 4vw;
+    }
+  }
+
+  /* MOVIMENTO REDUZIDO */
+  @media(prefers-reduced-motion:reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .mark {
+      animation: none;
+    }
+
+    a.tile:hover {
+      transform: none;
+    }
+
+    .js [data-r],
+    .js .split .line > span,
+    .js .mark-wrap,
+    .js .cover h1 span {
+      opacity: 1 !important;
+      transform: none !important;
+      scale: 1 !important;
+      transition: none !important;
+    }
+
+    #bar {
+      display: none;
+    }
   }
 </style>
 </head>
+
 <body>
 
 <div id="bar" aria-hidden="true"></div>
 
-<!-- ============ CAPA ============ -->
+<!-- CAPA -->
 <header class="cover" id="topo">
   <div class="cover-top sm">
-    <div data-r>João Felix<br>Atendimento · Estratégia · Web</div>
+    <div data-r>
+      João Felix<br>
+      Atendimento · Estratégia · Web
+    </div>
+
     <nav data-r style="--d:.1s">
       <a href="#portfolios">Portfólios</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
+
     <div class="r" data-r style="--d:.2s">
       Instagram: @jfeelix_<br>
       Sorocaba — SP<br>
@@ -166,7 +629,7 @@
     </div>
   </div>
 
-  <!-- símbolo próprio: oito pétalas -->
+  <!-- SÍMBOLO DE OITO PÉTALAS -->
   <div class="mark-wrap" id="mark">
     <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
       <g fill="#0f0e0d">
@@ -179,22 +642,27 @@
         <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(270 100 100)"/>
         <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(315 100 100)"/>
       </g>
-      <circle cx="100" cy="100" r="17" fill="#e8582c"/>
+      <circle cx="100" cy="100" r="17" fill="#aa2e28"/>
     </svg>
   </div>
 
   <h1 id="titulo"><span id="fit">Portfólio</span></h1>
 </header>
 
-<!-- ============ SOBRE (coluna) + PORTFÓLIOS (blocos) ============ -->
+<!-- SOBRE + PORTFÓLIOS -->
 <section class="sec" id="portfolios">
   <div class="dupla">
 
     <aside class="sobre" id="sobre">
       <h2 class="big split">Sobre</h2>
 
-      <p class="txt" data-r>Profissional de publicidade com atuação em atendimento, estratégia e direção de arte, e domínio de desenvolvimento web. Conduzo projetos da prospecção do cliente à entrega final, com foco em resultado.</p>
-      <p class="txt" data-r style="--d:.08s">Minha trajetória na gestão de bares e na operação de eventos de grande público construiu a base do meu trabalho: gestão de equipes, decisão sob pressão e rigor com prazos. Hoje aplico essa experiência em projetos de marca e comunicação, incluindo a minha própria marca, a orgâniCo.</p>
+      <p class="txt" data-r>
+        Profissional de publicidade com atuação em atendimento, estratégia e direção de arte, e domínio de desenvolvimento web. Conduzo projetos da prospecção do cliente à entrega final, com foco em resultado.
+      </p>
+
+      <p class="txt" data-r style="--d:.08s">
+        Minha trajetória na gestão de bares e na operação de eventos de grande público construiu a base do meu trabalho: gestão de equipes, decisão sob pressão e rigor com prazos. Hoje aplico essa experiência em projetos de marca e comunicação, incluindo a minha própria marca, a orgâniCo.
+      </p>
 
       <div class="bloco contato" data-r>
         <h4 class="sm">Contato</h4>
@@ -228,18 +696,22 @@
   </div>
 </section>
 
-<!-- ============ FAIXA EM MOVIMENTO ============ -->
-<div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"></div></div>
+<!-- FAIXA EM MOVIMENTO -->
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track" id="mq"></div>
+</div>
 
-<!-- ============ RODAPÉ ============ -->
+<!-- RODAPÉ -->
 <footer id="contato">
   <h2 class="big split">Bora crescer<br>junto?</h2>
+
   <div class="flinks sm" data-r style="--d:.2s">
     <a href="mailto:Joao.vframalho@senacsp.edu.br">E-mail</a>
     <a href="https://instagram.com/jfeelix_">Instagram</a>
     <a href="https://wa.me/5515998057042">WhatsApp</a>
     <a href="#topo">Voltar ao topo ↑</a>
   </div>
+
   <div class="fbottom sm" data-r style="--d:.3s">
     <span>João Victor Felix Ramalho</span>
     <span>Sorocaba — SP</span>
@@ -247,31 +719,50 @@
   </div>
 </footer>
 
-<!-- rolagem suave: se a biblioteca não carregar, o site funciona do mesmo jeito -->
+<!-- ROLAGEM SUAVE -->
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="portfolios.js"></script>
+
 <script>
 (function () {
   var root = document.documentElement;
-  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia &&
+    matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- título da capa ocupa a largura inteira ---------- */
+  /* TÍTULO DA CAPA */
   function fit() {
     var s = document.getElementById("fit");
     var box = s.parentElement;
+
     s.style.fontSize = "100px";
+
     var w = s.getBoundingClientRect().width;
     var alvo = box.clientWidth * 0.985;
-    if (w > 0) s.style.fontSize = (100 * alvo / w) + "px";
+
+    if (w > 0) {
+      s.style.fontSize = (100 * alvo / w) + "px";
+    }
   }
+
   fit();
   window.addEventListener("resize", fit);
   window.addEventListener("load", fit);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 
-  /* ---------- ordem, nome e cor dos blocos (Eventos foi unido a Trabalhos) ---------- */
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fit);
+  }
+
+  /* ORDEM, NOMES E CORES DOS BLOCOS */
   var ORDEM = ["trabalhos", "designs", "fotos", "marca", "web"];
-  var COR = { trabalhos: "cv", designs: "c2", fotos: "c3", marca: "c1", web: "c5" };
+
+  var COR = {
+    trabalhos: "cv",
+    designs: "c2",
+    fotos: "c3",
+    marca: "c1",
+    web: "c5"
+  };
+
   var TEXTO = {
     trabalhos: {
       titulo: "Projetos & Eventos",
@@ -279,68 +770,118 @@
       desc: "Campanhas, ações e eventos conduzidos do briefing à execução. Cases com resultado real: Namata, Quarta-feira Delas, Esquenta da Copa, SSL e Café com Publis."
     }
   };
+
   var lista = [];
+
   ORDEM.forEach(function (id) {
     (window.PORTFOLIOS || []).forEach(function (p) {
       if (p.id !== id) return;
-      var c = {}; for (var k in p) c[k] = p[k];
-      var t = TEXTO[id]; if (t) for (var k2 in t) c[k2] = t[k2];
+
+      var c = {};
+      for (var k in p) c[k] = p[k];
+
+      var t = TEXTO[id];
+      if (t) {
+        for (var k2 in t) c[k2] = t[k2];
+      }
+
       lista.push(c);
     });
   });
+
   var total = lista.length;
 
-  /* ---------- blocos de portfólio, a partir do portfolios.js ---------- */
+  /* BLOCOS DE PORTFÓLIO */
   document.getElementById("bento").innerHTML = lista.map(function (p, i) {
     var on = p.status === "no-ar";
     var n = String(i + 1).padStart(2, "0");
-    // primeiro bloco ocupa a linha inteira; o último também, se sobrar um sozinho
-    var largo = (i === 0) || (i === total - 1 && (total - 1) % 2 === 1);
-    var cls = "tile " + (COR[p.id] || "c" + (i % 6)) + (on ? "" : " soon-t") + (p.img ? " hasimg" : "");
-    var st = "--s:" + (largo ? 2 : 1) + ";--d:" + ((i % 2) * 0.09).toFixed(2) + "s;" +
-             (p.img ? "background-image:url('" + p.img + "');" : "");
+
+    var largo = (i === 0) ||
+      (i === total - 1 && (total - 1) % 2 === 1);
+
+    var cls = "tile " + (COR[p.id] || "c" + (i % 6)) +
+      (on ? "" : " soon-t") +
+      (p.img ? " hasimg" : "");
+
+    var st = "--s:" + (largo ? 2 : 1) +
+      ";--d:" + ((i % 2) * 0.09).toFixed(2) + "s;" +
+      (p.img ? "background-image:url('" + p.img + "');" : "");
+
     var inner =
       '<div class="top"><span class="sm">' + n + '</span>' +
-      '<span class="pill ' + (on ? "live" : "soon") + '">' + (on ? "No ar" : "Em breve") + '</span></div>' +
+      '<span class="pill ' + (on ? "live" : "soon") + '">' +
+      (on ? "No ar" : "Em breve") + '</span></div>' +
       '<div class="bot"><h3>' + p.titulo + '</h3>' +
       '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px">' +
-      '<div><div class="sm">' + p.sub + '</div><p class="xs" style="margin-top:6px;max-width:34ch">' + p.desc + '</p></div>' +
-      (on ? '<span class="arrow">↗</span>' : '') + '</div></div>';
+      '<div><div class="sm">' + p.sub + '</div>' +
+      '<p class="xs" style="margin-top:6px;max-width:34ch">' +
+      p.desc + '</p></div>' +
+      (on ? '<span class="arrow">↗</span>' : '') +
+      '</div></div>';
+
     return on
-      ? '<a class="' + cls + '" data-r style="' + st + '" href="' + p.url + '">' + inner + '</a>'
-      : '<div class="' + cls + '" data-r style="' + st + '">' + inner + '</div>';
+      ? '<a class="' + cls + '" data-r style="' + st +
+        '" href="' + p.url + '">' + inner + '</a>'
+      : '<div class="' + cls + '" data-r style="' + st +
+        '">' + inner + '</div>';
   }).join("");
 
-  /* ---------- faixa em movimento ---------- */
-  var palavras = ["Atendimento", "Estratégia", "Branding", "Conteúdo", "Direção de arte", "Web", "Eventos"];
-  var conjunto = palavras.map(function (w) { return "<span>" + w + "</span><i></i>"; }).join("");
+  /* FAIXA EM MOVIMENTO */
+  var palavras = [
+    "Atendimento",
+    "Estratégia",
+    "Branding",
+    "Conteúdo",
+    "Direção de arte",
+    "Web",
+    "Eventos"
+  ];
+
+  var conjunto = palavras.map(function (w) {
+    return "<span>" + w + "</span><i></i>";
+  }).join("");
+
   var track = document.getElementById("mq");
   track.innerHTML = conjunto + conjunto;
 
-  /* ---------- títulos: cada linha sobe de dentro de uma máscara ---------- */
+  /* TÍTULOS ANIMADOS */
   document.querySelectorAll(".split").forEach(function (el) {
-    var rotulo = el.innerHTML.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, "");
+    var rotulo = el.innerHTML
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<[^>]+>/g, "");
+
     var linhas = el.innerHTML.split(/<br\s*\/?>/i);
+
     el.setAttribute("aria-label", rotulo);
+
     el.innerHTML = linhas.map(function (l, i) {
-      return '<span class="line" aria-hidden="true"><span style="--d:' + (i * 0.1).toFixed(1) + 's">' + l.trim() + "</span></span>";
+      return '<span class="line" aria-hidden="true"><span style="--d:' +
+        (i * 0.1).toFixed(1) + 's">' + l.trim() +
+        "</span></span>";
     }).join("");
   });
 
-  /* ---------- revelar ao rolar ---------- */
+  /* REVELAR ELEMENTOS AO ROLAR */
   var alvos = document.querySelectorAll("[data-r],.split");
+
   if (reduce || !("IntersectionObserver" in window)) {
-    alvos.forEach(function (a) { a.classList.add("in"); });
+    alvos.forEach(function (a) {
+      a.classList.add("in");
+    });
   } else {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (!e.isIntersecting) return;
+
         var el = e.target;
         el.classList.add("in");
         io.unobserve(el);
+
         if (el.hasAttribute("data-r")) {
-          // depois de revelado, devolve o elemento ao CSS normal (o hover dos blocos volta a funcionar)
-          var d = parseFloat(getComputedStyle(el).getPropertyValue("--d")) || 0;
+          var d = parseFloat(
+            getComputedStyle(el).getPropertyValue("--d")
+          ) || 0;
+
           setTimeout(function () {
             el.removeAttribute("data-r");
             el.classList.remove("in");
@@ -348,75 +889,125 @@
           }, (d + 1.4) * 1000);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px" });
-    alvos.forEach(function (a) { io.observe(a); });
+    }, {
+      threshold: 0.1,
+      rootMargin: "0px"
+    });
+
+    alvos.forEach(function (a) {
+      io.observe(a);
+    });
   }
 
-  /* ---------- entrada da capa ---------- */
+  /* ENTRADA DA CAPA */
   var iniciou = false;
+
   function iniciar() {
     if (iniciou) return;
+
     iniciou = true;
     root.classList.add("ready");
-    setTimeout(function () { root.classList.add("settled"); }, 2600);
+
+    setTimeout(function () {
+      root.classList.add("settled");
+    }, 2600);
   }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(iniciar, 80); });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      setTimeout(iniciar, 80);
+    });
+  }
+
   setTimeout(iniciar, 1200);
 
   if (reduce) return;
 
-  /* ---------- rolagem suave ---------- */
+  /* ROLAGEM SUAVE */
   var lenis = null;
+
   if (window.Lenis) {
     try {
       lenis = new Lenis({
         duration: 1.2,
-        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        easing: function (t) {
+          return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+        },
         smoothWheel: true
       });
-    } catch (err) { lenis = null; }
+    } catch (err) {
+      lenis = null;
+    }
   }
+
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
+
     if (!a || !lenis) return;
+
     var id = a.getAttribute("href");
     var alvo = id === "#topo" ? 0 : document.querySelector(id);
+
     if (alvo === null) return;
+
     e.preventDefault();
     lenis.scrollTo(alvo, { duration: 1.6 });
   });
 
-  /* ---------- parallax da capa, faixa e barra de progresso ---------- */
+  /* PARALLAX, FAIXA E BARRA DE PROGRESSO */
   var bar = document.getElementById("bar");
   var h1 = document.getElementById("titulo");
   var mark = document.getElementById("mark");
-  var mqX = 0, ultimo = performance.now();
+  var mqX = 0;
+  var ultimo = performance.now();
 
   function quadro(agora) {
-    if (lenis) lenis.raf(agora);
+    if (lenis) {
+      lenis.raf(agora);
+    }
+
     var y = lenis ? lenis.scroll : (window.pageYOffset || 0);
     var vh = window.innerHeight;
     var dt = Math.min(agora - ultimo, 64);
+
     ultimo = agora;
 
     var altura = root.scrollHeight - vh;
-    bar.style.transform = "scaleX(" + (altura > 0 ? Math.min(y / altura, 1) : 0) + ")";
+
+    bar.style.transform = "scaleX(" +
+      (altura > 0 ? Math.min(y / altura, 1) : 0) + ")";
 
     if (y < vh * 1.3) {
       var p = Math.min(y / vh, 1);
-      h1.style.transform = "translate3d(0," + (y * 0.2).toFixed(1) + "px,0)";
-      mark.style.transform = "translate3d(0," + (y * 0.4).toFixed(1) + "px,0) scale(" + (1 - p * 0.3).toFixed(3) + ")";
-      mark.style.opacity = p > 0.002 ? Math.max(0, 1 - p * 1.1).toFixed(3) : "";
+
+      h1.style.transform =
+        "translate3d(0," + (y * 0.2).toFixed(1) + "px,0)";
+
+      mark.style.transform =
+        "translate3d(0," + (y * 0.4).toFixed(1) +
+        "px,0) scale(" + (1 - p * 0.3).toFixed(3) + ")";
+
+      mark.style.opacity =
+        p > 0.002 ? Math.max(0, 1 - p * 1.1).toFixed(3) : "";
     }
 
     mqX -= dt * 0.05;
+
     var metade = track.scrollWidth / 2;
-    if (metade > 0) track.style.transform = "translate3d(" + ((mqX - y * 0.35) % metade).toFixed(1) + "px,0,0)";
+
+    if (metade > 0) {
+      track.style.transform =
+        "translate3d(" +
+        ((mqX - y * 0.35) % metade).toFixed(1) + "px,0,0)";
+    }
 
     requestAnimationFrame(quadro);
   }
+
   requestAnimationFrame(quadro);
 })();
 </script>
+
 </body>
 </html>
+```
