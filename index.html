@@ -422,7 +422,7 @@ a.tile:hover .arrow {
 }
 
 .pill.soon {
-  border-style: dashed;
+  border-: dashed;
   opacity: .65;
 }
 
@@ -684,6 +684,323 @@ footer h2 {
 
   #bar {
     display: none;
+  }
+}
+   /* ==========================================
+   ANIMAÇÕES EXTRAS — JFELIX 2026
+   Paleta Macka
+========================================== */
+
+/* 1. Entrada cinematográfica da capa */
+
+.cover {
+  isolation: isolate;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  transform: scaleY(1);
+  transform-origin: top;
+  z-index: 5;
+  pointer-events: none;
+  animation: revelar-capa 1.15s cubic-bezier(.76, 0, .24, 1) forwards;
+}
+
+@keyframes revelar-capa {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+.cover-top > div,
+.cover-top nav {
+  animation: entrar-cabecalho .9s cubic-bezier(.16,.84,.24,1) both;
+  animation-delay: .65s;
+}
+
+@keyframes entrar-cabecalho {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Símbolo com rotação mais orgânica */
+
+.mark {
+  transform-origin: center;
+  animation: girar-simbolo 32s linear infinite;
+}
+
+@keyframes girar-simbolo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mark-wrap {
+  transition: filter .5s ease;
+}
+
+.mark-wrap:hover {
+  filter: drop-shadow(0 0 22px rgba(254,253,215,.24));
+}
+
+/* 3. Títulos com entrada editorial */
+
+.split .line {
+  overflow: hidden;
+}
+
+.split .line > span {
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.js .split.in .line > span {
+  transition-delay: .08s;
+}
+
+.js .split.in .line:nth-child(2) > span {
+  transition-delay: .2s;
+}
+
+.js .split.in .line:nth-child(3) > span {
+  transition-delay: .32s;
+}
+
+/* 4. Cards com profundidade */
+
+.tile {
+  position: relative;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  transform:
+    perspective(1000px)
+    rotateX(var(--rot-x, 0deg))
+    rotateY(var(--rot-y, 0deg))
+    translateY(var(--lift, 0px));
+  transition:
+    transform .45s cubic-bezier(.2,.75,.25,1),
+    border-radius .45s ease,
+    box-shadow .45s ease;
+  will-change: transform;
+}
+
+a.tile:hover {
+  --lift: -7px;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+/* Brilho que acompanha o cursor */
+
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255,255,255,.23),
+    transparent 48%
+  );
+  transition: opacity .35s ease;
+}
+
+a.tile:hover::before {
+  opacity: 1;
+}
+
+/* Conteúdo avança discretamente */
+
+.tile h3 {
+  transition:
+    transform .45s cubic-bezier(.16,.84,.24,1),
+    letter-spacing .45s ease;
+}
+
+a.tile:hover h3 {
+  transform: translateY(-4px);
+  letter-spacing: -.065em;
+}
+
+.tile .pill {
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .3s ease;
+}
+
+a.tile:hover .pill {
+  transform: translateY(-2px);
+}
+
+/* A seta reage ao cursor */
+
+.tile .arrow {
+  transition: transform .35s cubic-bezier(.16,.84,.24,1);
+}
+
+a.tile:hover .arrow {
+  transform: translate(5px, -5px) scale(1.18);
+}
+
+/* 5. Entrada dos cards em sequência */
+
+.js .bento > .tile {
+  transition:
+    opacity .8s cubic-bezier(.16,.84,.24,1),
+    transform .8s cubic-bezier(.16,.84,.24,1),
+    box-shadow .45s ease,
+    border-radius .45s ease;
+}
+
+.js .bento > .tile[data-r] {
+  opacity: 0;
+  transform: translateY(36px) scale(.97);
+}
+
+.js .bento > .tile.in {
+  opacity: 1;
+  transform:
+    perspective(1000px)
+    rotateX(var(--rot-x, 0deg))
+    rotateY(var(--rot-y, 0deg))
+    translateY(var(--lift, 0px))
+    scale(1);
+}
+
+.js .bento > .tile:nth-child(2) {
+  transition-delay: .08s;
+}
+
+.js .bento > .tile:nth-child(3) {
+  transition-delay: .16s;
+}
+
+.js .bento > .tile:nth-child(4) {
+  transition-delay: .24s;
+}
+
+.js .bento > .tile:nth-child(5) {
+  transition-delay: .32s;
+}
+
+/* 6. Faixa com movimento mais expressivo */
+
+.marquee {
+  position: relative;
+}
+
+.mq-track {
+  animation: faixa-flutuar 4s ease-in-out infinite alternate;
+}
+
+@keyframes faixa-flutuar {
+  from {
+    letter-spacing: -.055em;
+  }
+  to {
+    letter-spacing: -.035em;
+  }
+}
+
+.mq-track i {
+  transition: transform .4s ease;
+}
+
+.marquee:hover .mq-track i {
+  transform: scale(1.8);
+}
+
+/* 7. Sobre com detalhes de interação */
+
+.sobre {
+  transition:
+    border-radius .4s ease,
+    box-shadow .4s ease;
+}
+
+.sobre:hover {
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.12);
+}
+
+.sobre .bloco {
+  transition: border-color .35s ease;
+}
+
+.sobre .bloco:hover {
+  border-color: var(--terra);
+}
+
+/* 8. Links do rodapé */
+
+.flinks a {
+  transition:
+    opacity .3s ease,
+    padding .3s ease;
+}
+
+.flinks a:hover {
+  padding-left: 5px;
+  opacity: .7;
+}
+
+/* 9. Barra de progresso */
+
+#bar {
+  height: 4px;
+  background: var(--cream);
+  box-shadow: 0 0 12px rgba(254,253,215,.22);
+}
+
+/* 10. Respeito às preferências de movimento */
+
+@media (prefers-reduced-motion: reduce) {
+  .cover::before,
+  .mark,
+  .mq-track {
+    animation: none !important;
+  }
+
+  .cover::before {
+    display: none;
+  }
+
+  .tile,
+  .tile h3,
+  .tile .arrow,
+  .tile .pill,
+  .sobre,
+  .sobre .bloco,
+  .flinks a {
+    transition: none !important;
+  }
+}
+
+/* 11. Em telas sensíveis ao toque, remove a inclinação */
+
+@media (hover: none) {
+  .tile {
+    transform: none;
+  }
+
+  a.tile:hover {
+    transform: translateY(-3px);
   }
 }
 </style>
@@ -1321,6 +1638,53 @@ footer h2 {
     requestAnimationFrame(quadro);
   }
 
+   /* ==========================================
+   ANIMAÇÃO DOS CARDS COM O MOUSE
+========================================== */
+
+var cards = document.querySelectorAll(".bento .tile");
+
+cards.forEach(function (card) {
+
+  card.addEventListener("pointermove", function (evento) {
+
+    if (evento.pointerType !== "mouse") return;
+
+    var rect = card.getBoundingClientRect();
+
+    var x = evento.clientX - rect.left;
+    var y = evento.clientY - rect.top;
+
+    var centroX = rect.width / 2;
+    var centroY = rect.height / 2;
+
+    var rotY = ((x - centroX) / centroX) * 3;
+    var rotX = ((centroY - y) / centroY) * 3;
+
+    card.style.setProperty(
+      "--rot-x",
+      rotX.toFixed(2) + "deg"
+    );
+
+    card.style.setProperty(
+      "--rot-y",
+      rotY.toFixed(2) + "deg"
+    );
+
+    card.style.setProperty("--mouse-x", x + "px");
+    card.style.setProperty("--mouse-y", y + "px");
+
+  });
+
+  card.addEventListener("pointerleave", function () {
+
+    card.style.setProperty("--rot-x", "0deg");
+    card.style.setProperty("--rot-y", "0deg");
+    card.style.setProperty("--lift", "0px");
+
+  });
+
+});
 })();
 </script>
 
