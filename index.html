@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>João Felix · Portfólio 2026</title>
-
 <meta name="description" content="Atendimento, estratégia, branding, conteúdo e web. Escolha um portfólio para explorar.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +16,7 @@ document.documentElement.classList.add("js");
 </script>
 
 <style>
-/* ==================================================
-   1. PALETA MACKA
-================================================== */
-
+/* 1. PALETA MACKA */
 :root {
   --terra: #aa2e28;
   --cream: #fefdd7;
@@ -40,10 +36,7 @@ document.documentElement.classList.add("js");
   --pad: 28px;
 }
 
-/* ==================================================
-   2. RESET
-================================================== */
-
+/* 2. RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -106,28 +99,7 @@ a {
   line-height: .84;
 }
 
-/* ==================================================
-   3. BARRA DE PROGRESSO
-================================================== */
-
-#bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #fff;
-  mix-blend-mode: difference;
-  transform: scaleX(0);
-  transform-origin: left center;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-/* ==================================================
-   4. ANIMAÇÕES DE ENTRADA
-================================================== */
-
+/* 3. ANIMAÇÕES DE ENTRADA */
 .js [data-r] {
   opacity: 0;
   transform: translate3d(0, 28px, 0);
@@ -161,10 +133,7 @@ a {
   transform: translate3d(0, 0, 0);
 }
 
-/* ==================================================
-   5. CAPA
-================================================== */
-
+/* 4. CAPA */
 .cover {
   position: relative;
   background: var(--terra);
@@ -267,10 +236,7 @@ a {
   }
 }
 
-/* ==================================================
-   6. SEÇÃO SOBRE + PORTFÓLIOS
-================================================== */
-
+/* 5. SEÇÃO SOBRE + PORTFÓLIOS */
 .sec {
   padding: 28px var(--pad) 110px;
 }
@@ -334,10 +300,7 @@ a {
   margin-bottom: 5px;
 }
 
-/* ==================================================
-   7. BLOCOS DOS PORTFÓLIOS
-================================================== */
-
+/* 6. BLOCOS DOS PORTFÓLIOS */
 .bento {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -422,12 +385,11 @@ a.tile:hover .arrow {
 }
 
 .pill.soon {
-  border-: dashed;
+  border-style: dashed;
   opacity: .65;
 }
 
-/* PALETA MACKA APLICADA */
-
+/* PALETA MACKA */
 .c0 {
   background: var(--terra);
   color: var(--cream);
@@ -490,10 +452,7 @@ a.tile:hover .arrow {
   z-index: 1;
 }
 
-/* ==================================================
-   8. FAIXA ANIMADA
-================================================== */
-
+/* 7. FAIXA ANIMADA */
 .marquee {
   background: var(--pedra);
   color: var(--ink);
@@ -527,10 +486,7 @@ a.tile:hover .arrow {
   background: var(--terra);
 }
 
-/* ==================================================
-   9. RODAPÉ
-================================================== */
-
+/* 8. RODAPÉ */
 footer {
   background: var(--terra);
   color: var(--cream);
@@ -566,10 +522,7 @@ footer h2 {
   margin-top: 90px;
 }
 
-/* ==================================================
-   10. RESPONSIVIDADE
-================================================== */
-
+/* 9. RESPONSIVIDADE */
 @media (max-height: 760px) and (min-width: 1001px) {
   .sobre {
     position: static;
@@ -656,10 +609,7 @@ footer h2 {
   }
 }
 
-/* ==================================================
-   11. ACESSIBILIDADE
-================================================== */
-
+/* 10. ACESSIBILIDADE */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -681,18 +631,11 @@ footer h2 {
     transform: none !important;
     scale: 1 !important;
   }
-
-  #bar {
-    display: none;
-  }
 }
-   /* ==========================================
-   ANIMAÇÕES EXTRAS — JFELIX 2026
-   Paleta Macka
-========================================== */
+
+/* ANIMAÇÕES EXTRAS — JFELIX 2026 */
 
 /* 1. Entrada cinematográfica da capa */
-
 .cover {
   isolation: isolate;
 }
@@ -732,8 +675,7 @@ footer h2 {
   }
 }
 
-/* 2. Símbolo com rotação mais orgânica */
-
+/* 2. Símbolo com rotação orgânica */
 .mark {
   transform-origin: center;
   animation: girar-simbolo 32s linear infinite;
@@ -757,7 +699,6 @@ footer h2 {
 }
 
 /* 3. Títulos com entrada editorial */
-
 .split .line {
   overflow: hidden;
 }
@@ -780,7 +721,6 @@ footer h2 {
 }
 
 /* 4. Cards com profundidade */
-
 .tile {
   position: relative;
   isolation: isolate;
@@ -804,7 +744,6 @@ a.tile:hover {
 }
 
 /* Brilho que acompanha o cursor */
-
 .tile::before {
   content: "";
   position: absolute;
@@ -825,7 +764,6 @@ a.tile:hover::before {
 }
 
 /* Conteúdo avança discretamente */
-
 .tile h3 {
   transition:
     transform .45s cubic-bezier(.16,.84,.24,1),
@@ -849,7 +787,6 @@ a.tile:hover .pill {
 }
 
 /* A seta reage ao cursor */
-
 .tile .arrow {
   transition: transform .35s cubic-bezier(.16,.84,.24,1);
 }
@@ -859,7 +796,6 @@ a.tile:hover .arrow {
 }
 
 /* 5. Entrada dos cards em sequência */
-
 .js .bento > .tile {
   transition:
     opacity .8s cubic-bezier(.16,.84,.24,1),
@@ -899,8 +835,7 @@ a.tile:hover .arrow {
   transition-delay: .32s;
 }
 
-/* 6. Faixa com movimento mais expressivo */
-
+/* 6. Faixa com movimento */
 .marquee {
   position: relative;
 }
@@ -927,7 +862,6 @@ a.tile:hover .arrow {
 }
 
 /* 7. Sobre com detalhes de interação */
-
 .sobre {
   transition:
     border-radius .4s ease,
@@ -948,7 +882,6 @@ a.tile:hover .arrow {
 }
 
 /* 8. Links do rodapé */
-
 .flinks a {
   transition:
     opacity .3s ease,
@@ -960,16 +893,7 @@ a.tile:hover .arrow {
   opacity: .7;
 }
 
-/* 9. Barra de progresso */
-
-#bar {
-  height: 4px;
-  background: var(--cream);
-  box-shadow: 0 0 12px rgba(254,253,215,.22);
-}
-
-/* 10. Respeito às preferências de movimento */
-
+/* 9. Respeito às preferências de movimento */
 @media (prefers-reduced-motion: reduce) {
   .cover::before,
   .mark,
@@ -992,8 +916,7 @@ a.tile:hover .arrow {
   }
 }
 
-/* 11. Em telas sensíveis ao toque, remove a inclinação */
-
+/* 10. Em telas sensíveis ao toque, remove a inclinação */
 @media (hover: none) {
   .tile {
     transform: none;
@@ -1003,23 +926,12 @@ a.tile:hover .arrow {
     transform: translateY(-3px);
   }
 }
-   ```css
-/* Ocultar barra de progresso da rolagem */
-#bar {
-  display: none !important;
-}
-```
 </style>
 </head>
 
 <body>
 
-<div id="bar" aria-hidden="true"></div>
-
-<!-- ==================================================
-     CAPA
-================================================== -->
-
+<!-- CAPA -->
 <header class="cover" id="topo">
 
   <div class="cover-top sm">
@@ -1068,10 +980,7 @@ a.tile:hover .arrow {
 
 </header>
 
-<!-- ==================================================
-     SOBRE + PORTFÓLIOS
-================================================== -->
-
+<!-- SOBRE + PORTFÓLIOS -->
 <section class="sec" id="portfolios">
 
   <div class="dupla">
@@ -1181,25 +1090,18 @@ a.tile:hover .arrow {
     </aside>
 
     <!-- OS PORTFÓLIOS SÃO CARREGADOS PELO JAVASCRIPT -->
-
     <div class="bento" id="bento"></div>
 
   </div>
 
 </section>
 
-<!-- ==================================================
-     FAIXA ANIMADA
-================================================== -->
-
+<!-- FAIXA ANIMADA -->
 <div class="marquee" aria-hidden="true">
   <div class="mq-track" id="mq"></div>
 </div>
 
-<!-- ==================================================
-     RODAPÉ
-================================================== -->
-
+<!-- RODAPÉ -->
 <footer id="contato">
 
   <h2 class="big split">Bora crescer<br>junto?</h2>
@@ -1225,11 +1127,7 @@ a.tile:hover .arrow {
   </div>
 
 </footer>
-
-<!-- ==================================================
-     DADOS DOS PORTFÓLIOS
-================================================== -->
-
+<!-- DADOS DOS PORTFÓLIOS -->
 <script src="portfolios.js"></script>
 
 <script>
@@ -1241,9 +1139,7 @@ a.tile:hover .arrow {
   var reduce = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ==================================================
-     AJUSTAR O TAMANHO DO TÍTULO
-  ================================================== */
+  /* AJUSTAR O TAMANHO DO TÍTULO */
 
   function fit() {
     var titulo = document.getElementById("fit");
@@ -1270,9 +1166,7 @@ a.tile:hover .arrow {
     document.fonts.ready.then(fit);
   }
 
-  /* ==================================================
-     CONFIGURAÇÃO DOS PORTFÓLIOS
-  ================================================== */
+  /* CONFIGURAÇÃO DOS PORTFÓLIOS */
 
   var ORDEM = [
     "trabalhos",
@@ -1321,9 +1215,7 @@ a.tile:hover .arrow {
     });
   });
 
-  /* ==================================================
-     CRIAR OS BLOCOS
-  ================================================== */
+  /* CRIAR OS BLOCOS DOS PORTFÓLIOS */
 
   var bento = document.getElementById("bento");
   var total = lista.length;
@@ -1404,9 +1296,7 @@ a.tile:hover .arrow {
     }).join("");
   }
 
-  /* ==================================================
-     FAIXA DE TEXTO EM MOVIMENTO
-  ================================================== */
+  /* FAIXA DE TEXTO EM MOVIMENTO */
 
   var palavras = [
     "Atendimento",
@@ -1428,9 +1318,7 @@ a.tile:hover .arrow {
     track.innerHTML = conjunto + conjunto;
   }
 
-  /* ==================================================
-     TÍTULOS ANIMADOS
-  ================================================== */
+  /* TÍTULOS ANIMADOS */
 
   document.querySelectorAll(".split").forEach(function (el) {
     var linhas = el.innerHTML.split(/<br\s*\/?>/i);
@@ -1448,9 +1336,7 @@ a.tile:hover .arrow {
     }).join("");
   });
 
-  /* ==================================================
-     ANIMAÇÕES AO ENTRAR NA TELA
-  ================================================== */
+  /* ANIMAÇÕES AO ENTRAR NA TELA */
 
   var alvos = document.querySelectorAll("[data-r], .split");
 
@@ -1486,11 +1372,7 @@ a.tile:hover .arrow {
       observador.observe(el);
     });
 
-    /*
-      Segurança: se o navegador não disparar o observador,
-      o conteúdo continuará visível.
-    */
-
+    /* Segurança: mantém o conteúdo visível caso o observador falhe. */
     window.setTimeout(function () {
       alvos.forEach(function (el) {
         if (!el.classList.contains("in")) {
@@ -1501,9 +1383,7 @@ a.tile:hover .arrow {
     }, 2500);
   }
 
-  /* ==================================================
-     ENTRADA DA CAPA
-  ================================================== */
+  /* ENTRADA DA CAPA */
 
   function iniciar() {
     root.classList.add("ready");
@@ -1519,10 +1399,7 @@ a.tile:hover .arrow {
 
   window.setTimeout(iniciar, 500);
 
-  /* ==================================================
-     NAVEGAÇÃO SUAVE ENTRE SEÇÕES
-     Não depende do Lenis.
-  ================================================== */
+  /* NAVEGAÇÃO SUAVE ENTRE SEÇÕES */
 
   document.addEventListener("click", function (evento) {
     var link = evento.target.closest('a[href^="#"]');
@@ -1556,11 +1433,10 @@ a.tile:hover .arrow {
     }
   });
 
-  /* ==================================================
-     ROLAGEM NATIVA + BARRA + MOVIMENTO DA CAPA
-  ================================================== */
+  /* ROLAGEM NATIVA + MOVIMENTO DA CAPA
+     A barra de progresso foi removida.
+  */
 
-  var bar = document.getElementById("bar");
   var h1 = document.getElementById("titulo");
   var mark = document.getElementById("mark");
 
@@ -1575,19 +1451,6 @@ a.tile:hover .arrow {
     var dt = Math.min(agora - ultimo, 64);
 
     ultimo = agora;
-
-    /* Barra de progresso */
-
-    var alturaTotal =
-      document.documentElement.scrollHeight - vh;
-
-    if (bar) {
-      var progresso = alturaTotal > 0
-        ? Math.min(Math.max(y / alturaTotal, 0), 1)
-        : 0;
-
-      bar.style.transform = "scaleX(" + progresso + ")";
-    }
 
     /* Movimento da capa durante a rolagem */
 
@@ -1634,66 +1497,61 @@ a.tile:hover .arrow {
     requestAnimationFrame(quadro);
   }
 
-  /*
-    A animação acompanha a rolagem nativa.
-    Ela não captura a roda do mouse nem bloqueia a página.
-  */
+  /* A animação acompanha a rolagem nativa sem bloqueá-la. */
 
   if (!rafAtivo) {
     rafAtivo = true;
     requestAnimationFrame(quadro);
   }
 
-   /* ==========================================
-   ANIMAÇÃO DOS CARDS COM O MOUSE
-========================================== */
+  /* ANIMAÇÃO DOS CARDS COM O MOUSE */
 
-var cards = document.querySelectorAll(".bento .tile");
+  var cards = document.querySelectorAll(".bento .tile");
 
-cards.forEach(function (card) {
+  cards.forEach(function (card) {
 
-  card.addEventListener("pointermove", function (evento) {
+    card.addEventListener("pointermove", function (evento) {
 
-    if (evento.pointerType !== "mouse") return;
+      if (evento.pointerType !== "mouse") return;
 
-    var rect = card.getBoundingClientRect();
+      var rect = card.getBoundingClientRect();
 
-    var x = evento.clientX - rect.left;
-    var y = evento.clientY - rect.top;
+      var x = evento.clientX - rect.left;
+      var y = evento.clientY - rect.top;
 
-    var centroX = rect.width / 2;
-    var centroY = rect.height / 2;
+      var centroX = rect.width / 2;
+      var centroY = rect.height / 2;
 
-    var rotY = ((x - centroX) / centroX) * 3;
-    var rotX = ((centroY - y) / centroY) * 3;
+      var rotY = ((x - centroX) / centroX) * 3;
+      var rotX = ((centroY - y) / centroY) * 3;
 
-    card.style.setProperty(
-      "--rot-x",
-      rotX.toFixed(2) + "deg"
-    );
+      card.style.setProperty(
+        "--rot-x",
+        rotX.toFixed(2) + "deg"
+      );
 
-    card.style.setProperty(
-      "--rot-y",
-      rotY.toFixed(2) + "deg"
-    );
+      card.style.setProperty(
+        "--rot-y",
+        rotY.toFixed(2) + "deg"
+      );
 
-    card.style.setProperty("--mouse-x", x + "px");
-    card.style.setProperty("--mouse-y", y + "px");
+      card.style.setProperty("--mouse-x", x + "px");
+      card.style.setProperty("--mouse-y", y + "px");
+
+    });
+
+    card.addEventListener("pointerleave", function () {
+
+      card.style.setProperty("--rot-x", "0deg");
+      card.style.setProperty("--rot-y", "0deg");
+      card.style.setProperty("--lift", "0px");
+
+    });
 
   });
 
-  card.addEventListener("pointerleave", function () {
-
-    card.style.setProperty("--rot-x", "0deg");
-    card.style.setProperty("--rot-y", "0deg");
-    card.style.setProperty("--lift", "0px");
-
-  });
-
-});
 })();
 </script>
 
 </body>
 </html>
-```
