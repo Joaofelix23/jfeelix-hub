@@ -76,19 +76,25 @@
     line-height: .84;
   }
 
-  /* ROLAGEM SUAVE */
-  html.lenis,
-  html.lenis body {
-    height: auto;
-  }
+ ```css
+/* ROLAGEM NATIVA DO NAVEGADOR */
+html {
+  height: auto;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
 
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
-  .lenis.lenis-stopped {
-    overflow: hidden;
-  }
+/* Evita bloquear a rolagem */
+.lenis.lenis-stopped {
+  overflow: auto;
+}
+```
 
   /* BARRA DE PROGRESSO */
   #bar {
