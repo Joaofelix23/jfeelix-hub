@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <style>
-  /* Remove qualquer numeração do tipo 01, 02 nos cards */
+  /* Remove qualquer numeração residual caso exista */
   .card-num, .card-number, .num, [class*="num"] {
     display: none !important;
   }
@@ -354,7 +354,7 @@ a.tile:hover {
 
 .tile .top {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Alinha o selo à direita, já que o número foi removido */
   align-items: center;
   gap: 12px;
   position: relative;
@@ -670,12 +670,11 @@ footer h2 {
     scale: 1 !important;
   }
 }
-   /* ==========================================
+
+/* ==========================================
    ANIMAÇÕES EXTRAS — JFELIX 2026
    Paleta Macka
 ========================================== */
-
-/* 1. Entrada cinematográfica da capa */
 
 .cover {
   isolation: isolate;
@@ -716,8 +715,6 @@ footer h2 {
   }
 }
 
-/* 2. Símbolo com rotação mais orgânica */
-
 .mark {
   transform-origin: center;
   animation: girar-simbolo 32s linear infinite;
@@ -740,8 +737,6 @@ footer h2 {
   filter: drop-shadow(0 0 22px rgba(254,253,215,.24));
 }
 
-/* 3. Títulos com entrada editorial */
-
 .split .line {
   overflow: hidden;
 }
@@ -762,8 +757,6 @@ footer h2 {
 .js .split.in .line:nth-child(3) > span {
   transition-delay: .32s;
 }
-
-/* 4. Cards com profundidade */
 
 .tile {
   position: relative;
@@ -787,8 +780,6 @@ a.tile:hover {
   box-shadow: 0 18px 40px rgba(0,0,0,.18);
 }
 
-/* Brilho que acompanha o cursor */
-
 .tile::before {
   content: "";
   position: absolute;
@@ -807,8 +798,6 @@ a.tile:hover {
 a.tile:hover::before {
   opacity: 1;
 }
-
-/* Conteúdo avança discretamente */
 
 .tile h3 {
   transition:
@@ -832,8 +821,6 @@ a.tile:hover .pill {
   transform: translateY(-2px);
 }
 
-/* A seta reage ao cursor */
-
 .tile .arrow {
   transition: transform .35s cubic-bezier(.16,.84,.24,1);
 }
@@ -841,8 +828,6 @@ a.tile:hover .pill {
 a.tile:hover .arrow {
   transform: translate(5px, -5px) scale(1.18);
 }
-
-/* 5. Entrada dos cards em sequência */
 
 .js .bento > .tile {
   transition:
@@ -883,8 +868,6 @@ a.tile:hover .arrow {
   transition-delay: .32s;
 }
 
-/* 6. Faixa com movimento mais expressivo */
-
 .marquee {
   position: relative;
 }
@@ -910,8 +893,6 @@ a.tile:hover .arrow {
   transform: scale(1.8);
 }
 
-/* 7. Sobre com detalhes de interação */
-
 .sobre {
   transition:
     border-radius .4s ease,
@@ -931,8 +912,6 @@ a.tile:hover .arrow {
   border-color: var(--terra);
 }
 
-/* 8. Links do rodapé */
-
 .flinks a {
   transition:
     opacity .3s ease,
@@ -943,8 +922,6 @@ a.tile:hover .arrow {
   padding-left: 5px;
   opacity: .7;
 }
-
-/* 10. Respeito às preferências de movimento */
 
 @media (prefers-reduced-motion: reduce) {
   .cover::before,
@@ -968,8 +945,6 @@ a.tile:hover .arrow {
   }
 }
 
-/* 11. Em telas sensíveis ao toque, remove a inclinação */
-
 @media (hover: none) {
   .tile {
     transform: none;
@@ -980,8 +955,6 @@ a.tile:hover .arrow {
   }
 }
 
-
-/* Ícones dos contatos no rodapé */
 .flinks a.contact-link {
   display: inline-flex;
   align-items: center;
@@ -1005,8 +978,6 @@ a.tile:hover .arrow {
   stroke: none;
 }
 
-   
-/* DESIGN — texto claro e legível */
 .tile.c2 {
   background-color: #8a4c2b;
   color: #fefdd7;
@@ -1028,8 +999,6 @@ a.tile:hover .arrow {
   background: #fefdd7;
 }
 
-   
-/* FOTOS — texto claro e legível */
 .tile.c3 {
   background-color: #8f817b;
   color: #fefdd7;
@@ -1051,7 +1020,6 @@ a.tile:hover .arrow {
   background: #fefdd7;
 }
 
-/* MARCA — texto claro e legível */
 .tile.c4 {
   background-color: #512b25;
   color: #fefdd7;
@@ -1072,18 +1040,10 @@ a.tile:hover .arrow {
 .tile.c4 .pill.live::before {
   background: #fefdd7;
 }
-
-   /* OCULTAR NÚMEROS DOS POPS */
-.tile .numero,
-.tile .number,
-.tile .num {
-  display: none !important;
-}
 </style>
 </head>
 
 <body>
-
 
 <!-- ==================================================
      CAPA
@@ -1099,7 +1059,7 @@ a.tile:hover .arrow {
     </div>
 
     <nav data-r>
-      <a href="#portfolios">Portfólios</a>
+      <a href="#portfólios">Portfólios</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -1141,7 +1101,7 @@ a.tile:hover .arrow {
      SOBRE + PORTFÓLIOS
 ================================================== -->
 
-<section class="sec" id="portfolios">
+<section class="sec" id="portfólios">
 
   <div class="dupla">
 
@@ -1170,7 +1130,7 @@ a.tile:hover .arrow {
 
         <p class="xs">
           <a href="mailto:jvx.felix@gmail.com">
-            jvx.felix@gmaill.com
+            jvx.felix@gmail.com
           </a>
         </p>
 
@@ -1300,7 +1260,6 @@ a.tile:hover .arrow {
       <span>WhatsApp</span>
     </a>
 
-     
     <a href="https://www.linkedin.com/in/jfeelix/" target="_blank" rel="noopener noreferrer" class="contact-link">
       <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M5 3.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path>
@@ -1420,7 +1379,7 @@ a.tile:hover .arrow {
   });
 
   /* ==================================================
-     CRIAR OS BLOCOS
+     CRIAR OS BLOCOS (SEM AS NUMERAÇÕES)
   ================================================== */
 
   var bento = document.getElementById("bento");
@@ -1429,7 +1388,6 @@ a.tile:hover .arrow {
   if (bento) {
     bento.innerHTML = lista.map(function (p, i) {
       var ativo = p.status === "no-ar";
-      var numero = String(i + 1).padStart(2, "0");
 
       var largo = i === 0 ||
         (i === total - 1 && (total - 1) % 2 === 1);
@@ -1458,7 +1416,6 @@ a.tile:hover .arrow {
 
       var interno =
         '<div class="top">' +
-          '<span class="sm">' + numero + '</span>' +
           '<span class="pill ' +
             (ativo ? "live" : "soon") + '">' +
             (ativo ? "No ar" : "Em breve") +
@@ -1584,11 +1541,6 @@ a.tile:hover .arrow {
       observador.observe(el);
     });
 
-    /*
-      Segurança: se o navegador não disparar o observador,
-      o conteúdo continuará visível.
-    */
-
     window.setTimeout(function () {
       alvos.forEach(function (el) {
         if (!el.classList.contains("in")) {
@@ -1619,7 +1571,6 @@ a.tile:hover .arrow {
 
   /* ==================================================
      NAVEGAÇÃO SUAVE ENTRE SEÇÕES
-     Não depende do Lenis.
   ================================================== */
 
   document.addEventListener("click", function (evento) {
@@ -1673,8 +1624,6 @@ a.tile:hover .arrow {
 
     ultimo = agora;
 
-/* Movimento da capa durante a rolagem */
-
     if (y < vh * 1.3) {
       var p = Math.min(y / vh, 1);
 
@@ -1700,8 +1649,6 @@ a.tile:hover .arrow {
       }
     }
 
-    /* Faixa animada */
-
     if (track && !reduce) {
       mqX -= dt * 0.05;
 
@@ -1718,66 +1665,61 @@ a.tile:hover .arrow {
     requestAnimationFrame(quadro);
   }
 
-  /*
-    A animação acompanha a rolagem nativa.
-    Ela não captura a roda do mouse nem bloqueia a página.
-  */
-
   if (!rafAtivo) {
     rafAtivo = true;
     requestAnimationFrame(quadro);
   }
 
-   /* ==========================================
-   ANIMAÇÃO DOS CARDS COM O MOUSE
-========================================== */
+  /* ==========================================
+     ANIMAÇÃO DOS CARDS COM O MOUSE
+  ========================================== */
 
-var cards = document.querySelectorAll(".bento .tile");
+  var cards = document.querySelectorAll(".bento .tile");
 
-cards.forEach(function (card) {
+  cards.forEach(function (card) {
 
-  card.addEventListener("pointermove", function (evento) {
+    card.addEventListener("pointermove", function (evento) {
 
-    if (evento.pointerType !== "mouse") return;
+      if (evento.pointerType !== "mouse") return;
 
-    var rect = card.getBoundingClientRect();
+      var rect = card.getBoundingClientRect();
 
-    var x = evento.clientX - rect.left;
-    var y = evento.clientY - rect.top;
+      var x = evento.clientX - rect.left;
+      var y = evento.clientY - rect.top;
 
-    var centroX = rect.width / 2;
-    var centroY = rect.height / 2;
+      var centroX = rect.width / 2;
+      var centroY = rect.height / 2;
 
-    var rotY = ((x - centroX) / centroX) * 3;
-    var rotX = ((centroY - y) / centroY) * 3;
+      var rotY = ((x - centroX) / centroX) * 3;
+      var rotX = ((centroY - y) / centroY) * 3;
 
-    card.style.setProperty(
-      "--rot-x",
-      rotX.toFixed(2) + "deg"
-    );
+      card.style.setProperty(
+        "--rot-x",
+        rotX.toFixed(2) + "deg"
+      );
 
-    card.style.setProperty(
-      "--rot-y",
-      rotY.toFixed(2) + "deg"
-    );
+      card.style.setProperty(
+        "--rot-y",
+        rotY.toFixed(2) + "deg"
+      );
 
-    card.style.setProperty("--mouse-x", x + "px");
-    card.style.setProperty("--mouse-y", y + "px");
+      card.style.setProperty("--mouse-x", x + "px");
+      card.style.setProperty("--mouse-y", y + "px");
+
+    });
+
+    card.addEventListener("pointerleave", function () {
+
+      card.style.setProperty("--rot-x", "0deg");
+      card.style.setProperty("--rot-y", "0deg");
+      card.style.setProperty("--lift", "0px");
+
+    });
 
   });
 
-  card.addEventListener("pointerleave", function () {
-
-    card.style.setProperty("--rot-x", "0deg");
-    card.style.setProperty("--rot-y", "0deg");
-    card.style.setProperty("--lift", "0px");
-
-  });
-
-});
 })();
 </script>
 
 </body>
 </html>
-
