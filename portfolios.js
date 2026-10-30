@@ -20,7 +20,7 @@ window.PORTFOLIOS = [
     id: "marca",
     titulo: "Marca",
     sub: "Branding · Identidade · Produto",
-    desc: "orgâniCo e outros projetos de marca: conceito, identidade visual, mockups e coleções.",
+    desc: "Projeto da marca OrganiCo: conceito, identidade visual, mockups e coleções.",
     url: "https://marca-jfeelix.vercel.app",
     status: "em-breve"
   },
@@ -36,7 +36,7 @@ window.PORTFOLIOS = [
     id: "fotos",
     titulo: "Fotos",
     sub: "Fotografia · Lightroom",
-    desc: "Ensaios, bastidores e fotografia de eventos, com edição própria.",
+    desc: "Fotografia de eventos, com edição própria.",
     url: "https://fotos-jfeelix.vercel.app",
     status: "em-breve"
   },
@@ -52,7 +52,7 @@ window.PORTFOLIOS = [
     id: "web",
     titulo: "Web",
     sub: "HTML · CSS · JS",
-    desc: "Sites e hubs criados do zero, como o site da Copa do Namata.",
+    desc: "Sites e hubs criados do zero, como o site da Copa do Namata ou todo o portifólio.",
     url: "https://web-jfeelix.vercel.app",
     status: "em-breve"
   }
