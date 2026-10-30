@@ -2,13 +2,6 @@
 <html lang="pt-BR">
 <head>
 <style>
-  /* Força a seta a se comportar como texto normal no iOS, evitando o emoji */
-.arrow {
-  font-family: var(--f) !important;
-  font-style: normal !important;
-  font-variant: normal !important;
-  text-decoration: none !important;
-}
   /* Remove qualquer numeração residual caso exista */
   .card-num, .card-number, .num, [class*="num"] {
     display: none !important;
@@ -361,7 +354,7 @@ a.tile:hover {
 
 .tile .top {
   display: flex;
-  justify-content: flex-end; /* Alinha o selo à direita, já que o número foi removido */
+  justify-content: flex-end;
   align-items: center;
   gap: 12px;
   position: relative;
@@ -384,10 +377,23 @@ a.tile:hover {
 }
 
 .tile .arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
-  font-size: 30px;
-  line-height: 1;
   transition: transform .3s;
+}
+
+.tile .arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 a.tile:hover .arrow {
@@ -1243,12 +1249,12 @@ a.tile:hover .arrow {
   <div class="flinks sm" data-r>
 
     <a href="mailto:jvx.felix@gmail.com" class="contact-link">
-  <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <rect x="2.5" y="4.5" width="19" height="15" rx="1.5"></rect>
-    <path d="m3.5 6 8.5 7 8.5-7"></path>
-  </svg>
-  <span>E-mail</span>
-</a>
+      <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="2.5" y="4.5" width="19" height="15" rx="1.5"></rect>
+        <path d="m3.5 6 8.5 7 8.5-7"></path>
+      </svg>
+      <span>E-mail</span>
+    </a>
 
     <a href="https://instagram.com/jfeelix_" target="_blank" rel="noopener noreferrer" class="contact-link">
       <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1386,7 +1392,7 @@ a.tile:hover .arrow {
   });
 
   /* ==================================================
-     CRIAR OS BLOCOS (SEM AS NUMERAÇÕES)
+     CRIAR OS BLOCOS (COM SVG SEGURO PARA O IOS)
   ================================================== */
 
   var bento = document.getElementById("bento");
@@ -1421,6 +1427,9 @@ a.tile:hover .arrow {
       var descricao = p.desc || "";
       var url = p.url || "#";
 
+      /* Substituído o caractere unicode por SVG limpo para o iOS não converter em emoji */
+      var iconeSeta = '<span class="arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></span>';
+
       var interno =
         '<div class="top">' +
           '<span class="pill ' +
@@ -1445,7 +1454,7 @@ a.tile:hover .arrow {
               '</p>' +
             '</div>' +
 
-(ativo ? '<span class="arrow" style="font-family: var(--f); font-style: normal;">↗</span>' : '') +
+            (ativo ? iconeSeta : '') +
 
           '</div>' +
         '</div>';
@@ -1585,148 +1594,4 @@ a.tile:hover .arrow {
 
     if (!link) return;
 
-    var destino = link.getAttribute("href");
-
-    if (!destino || destino === "#") return;
-
-    var alvo = document.querySelector(destino);
-
-    if (!alvo) return;
-
-    evento.preventDefault();
-
-    if (reduce) {
-      alvo.scrollIntoView({
-        behavior: "auto",
-        block: "start"
-      });
-    } else {
-      alvo.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-
-    if (history.replaceState) {
-      history.replaceState(null, "", destino);
-    }
-  });
-
-  /* ==================================================
-     ROLAGEM NATIVA + MOVIMENTO DA CAPA
-  ================================================== */
-
-  var h1 = document.getElementById("titulo");
-  var mark = document.getElementById("mark");
-
-  var mqX = 0;
-  var ultimo = performance.now();
-  var rafAtivo = false;
-
-  function quadro(agora) {
-    var y = window.scrollY || window.pageYOffset || 0;
-    var vh = window.innerHeight;
-
-    var dt = Math.min(agora - ultimo, 64);
-
-    ultimo = agora;
-
-    if (y < vh * 1.3) {
-      var p = Math.min(y / vh, 1);
-
-      if (h1) {
-        h1.style.transform =
-          "translate3d(0," +
-          (y * 0.2).toFixed(1) +
-          "px,0)";
-      }
-
-      if (mark) {
-        mark.style.transform =
-          "translate3d(0," +
-          (y * 0.4).toFixed(1) +
-          "px,0) scale(" +
-          (1 - p * 0.3).toFixed(3) +
-          ")";
-
-        mark.style.opacity =
-          p > 0.002
-            ? String(Math.max(0, 1 - p * 1.1))
-            : "";
-      }
-    }
-
-    if (track && !reduce) {
-      mqX -= dt * 0.05;
-
-      var metade = track.scrollWidth / 2;
-
-      if (metade > 0) {
-        track.style.transform =
-          "translate3d(" +
-          ((mqX - y * 0.35) % metade).toFixed(1) +
-          "px,0,0)";
-      }
-    }
-
-    requestAnimationFrame(quadro);
-  }
-
-  if (!rafAtivo) {
-    rafAtivo = true;
-    requestAnimationFrame(quadro);
-  }
-
-  /* ==========================================
-     ANIMAÇÃO DOS CARDS COM O MOUSE
-  ========================================== */
-
-  var cards = document.querySelectorAll(".bento .tile");
-
-  cards.forEach(function (card) {
-
-    card.addEventListener("pointermove", function (evento) {
-
-      if (evento.pointerType !== "mouse") return;
-
-      var rect = card.getBoundingClientRect();
-
-      var x = evento.clientX - rect.left;
-      var y = evento.clientY - rect.top;
-
-      var centroX = rect.width / 2;
-      var centroY = rect.height / 2;
-
-      var rotY = ((x - centroX) / centroX) * 3;
-      var rotX = ((centroY - y) / centroY) * 3;
-
-      card.style.setProperty(
-        "--rot-x",
-        rotX.toFixed(2) + "deg"
-      );
-
-      card.style.setProperty(
-        "--rot-y",
-        rotY.toFixed(2) + "deg"
-      );
-
-      card.style.setProperty("--mouse-x", x + "px");
-      card.style.setProperty("--mouse-y", y + "px");
-
-    });
-
-    card.addEventListener("pointerleave", function () {
-
-      card.style.setProperty("--rot-x", "0deg");
-      card.style.setProperty("--rot-y", "0deg");
-      card.style.setProperty("--lift", "0px");
-
-    });
-
-  });
-
-})();
-</script>
-
-</body>
-</html>
+    var destino = link
