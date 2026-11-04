@@ -1088,7 +1088,11 @@ a.tile:hover .arrow {
   <div class="mark-wrap" id="mark">
 
    <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
-  <path d="M100 10 C100 70, 130 100, 190 100 C130 100, 100 130, 100 190 C100 130, 70 100, 10 100 C70 100, 100 70, 100 10 Z" fill="#fefdd7"/>
+  <path id="textPath" d="M 30, 100 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" fill="none"/>
+  <text font-size="16" fill="#fefdd7" font-weight="bold" letter-spacing="3">
+    <textPath href="#textPath" startOffset="0%">JFELIX® · CREATIVE DIRECTION · 2026 ·</textPath>
+  </text>
+  <circle cx="100" cy="100" r="15" fill="#fefdd7"/>
 </svg>
 
   </div>
