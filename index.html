@@ -656,7 +656,26 @@ footer h2 {
     margin-top: 60px;
   }
 }
+/* Animação de pulsação suave (efeito brilho/respirando) */
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(254, 253, 215, 0));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 18px rgba(254, 253, 215, 0.45));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(254, 253, 215, 0));
+  }
+}
 
+.pulsing-star {
+  animation: pulsar 3.5s ease-in-out infinite;
+  transform-origin: center;
+}
 /* ==================================================
    11. ACESSIBILIDADE
 ================================================== */
@@ -1064,25 +1083,23 @@ a.tile:hover .arrow {
 
 <header class="cover" id="topo">
 
-  <div class="cover-top sm">
+  <div class="mark-wrap" id="mark" style="text-align: center;">
+    <svg class="pulsing-star" viewBox="0 0 200 200" aria-hidden="true" style="width: min(24vw, 240px); height: auto; display: block; margin: 0 auto;">
+      <!-- Anel externo sutil -->
+      <circle cx="100" cy="100" r="85" fill="none" stroke="#fefdd7" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.4"/>
+      
+      <!-- Estrela de 4 pontas geométrica (pulsante) -->
+      <path d="M100 20 C100 70, 130 100, 180 100 C130 100, 100 130, 100 180 C100 130, 70 100, 20 100 C70 100, 100 70, 100 20 Z" fill="#fefdd7"/>
+      
+      <!-- Miolo central -->
+      <circle cx="100" cy="100" r="16" fill="#aa2e28"/>
+      <circle cx="100" cy="100" r="5" fill="#fefdd7"/>
+    </svg>
 
-    <div data-r>
-      João Felix<br>
-      Atendimento · Estratégia · Web
+    <!-- Texto fixo logo abaixo da estrela -->
+    <div style="font-family: var(--f); font-size: 11px; font-weight: 700; letter-spacing: 0.25em; color: #fefdd7; margin-top: 16px; text-transform: uppercase; opacity: 0.85;">
+      JFELIX® · CREATIVE DIRECTION · 2026
     </div>
-
-    <nav data-r>
-      <a href="#portfólios">Portfólios</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
-
-    <div class="r" data-r>
-      Instagram: @jfeelix_<br>
-      Sorocaba — SP<br>
-      2026
-    </div>
-
   </div>
 
   <div class="mark-wrap" id="mark">
