@@ -386,7 +386,7 @@ a.tile:hover {
   transition: transform .3s;
 }
 
-.tile .arrow svg {
+.tile .arrow  {
   width: 24px;
   height: 24px;
   fill: none;
@@ -1087,22 +1087,9 @@ a.tile:hover .arrow {
 
   <div class="mark-wrap" id="mark">
 
-    <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
-
-      <g fill="#fefdd7">
-        <ellipse cx="100" cy="42" rx="15" ry="42"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(45 100 100)"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(90 100 100)"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(135 100 100)"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(180 100 100)"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(225 100 100)"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(270 100 100)"/>
-        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(315 100 100)"/>
-      </g>
-
-      <circle cx="100" cy="100" r="17" fill="#aa2e28"/>
-
-    </svg>
+   <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+  <path d="M100 10 C100 70, 130 100, 190 100 C130 100, 100 130, 100 190 C100 130, 70 100, 10 100 C70 100, 100 70, 100 10 Z" fill="#fefdd7"/>
+</svg>
 
   </div>
 
