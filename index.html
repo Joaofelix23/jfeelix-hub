@@ -1087,15 +1087,21 @@ a.tile:hover .arrow {
 
   <div class="mark-wrap" id="mark">
 
-   <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
-  <g fill="none" stroke="#fefdd7" stroke-width="6">
-    <ellipse cx="100" cy="100" rx="40" ry="80"/>
-    <ellipse cx="100" cy="100" rx="40" ry="80" transform="rotate(45 100 100)"/>
-    <ellipse cx="100" cy="100" rx="40" ry="80" transform="rotate(90 100 100)"/>
-    <ellipse cx="100" cy="100" rx="40" ry="80" transform="rotate(135 100 100)"/>
-  </g>
-  <circle cx="100" cy="100" r="18" fill="#fefdd7"/>
-</svg>
+  <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+      <!-- Anel externo tracejado / pontilhado giratório -->
+      <circle cx="100" cy="100" r="85" fill="none" stroke="#fefdd7" stroke-width="2" stroke-dasharray="6 8" opacity="0.6"/>
+      
+      <!-- Anel intermediário sólido -->
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#fefdd7" stroke-width="3"/>
+      
+      <!-- Estrela de 4 pontas geométrica interna (estilo streetwear/editorial) -->
+      <path d="M100 25 C100 70, 130 100, 175 100 C130 100, 100 130, 100 175 C100 130, 70 100, 25 100 C70 100, 100 70, 100 25 Z" fill="#fefdd7"/>
+      
+      <!-- Miolo central de contraste -->
+      <circle cx="100" cy="100" r="18" fill="#aa2e28"/>
+      <circle cx="100" cy="100" r="6" fill="#fefdd7"/>
+    </svg>
+    
   </div>
 
   <h1 id="titulo"><span id="fit">Portfólio</span></h1>
