@@ -45,7 +45,26 @@ document.documentElement.classList.add("js");
   --ease: cubic-bezier(.16,.84,.24,1);
   --pad: 28px;
 }
+/* Animação de pulsação suave (efeito brilho/respirando) */
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(254, 253, 215, 0));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 18px rgba(254, 253, 215, 0.45));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(254, 253, 215, 0));
+  }
+}
 
+.pulsing-star {
+  animation: pulsar 3.5s ease-in-out infinite;
+  transform-origin: center;
+}
 /* ==================================================
    2. RESET
 ================================================== */
