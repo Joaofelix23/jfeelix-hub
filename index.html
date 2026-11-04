@@ -386,7 +386,7 @@ a.tile:hover {
   transition: transform .3s;
 }
 
-.tile .arrow  {
+.tile .arrow svg {
   width: 24px;
   height: 24px;
   fill: none;
@@ -656,26 +656,7 @@ footer h2 {
     margin-top: 60px;
   }
 }
-/* Animação de pulsação suave (efeito brilho/respirando) */
-@keyframes pulsar {
-  0% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0px rgba(254, 253, 215, 0));
-  }
-  50% {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 18px rgba(254, 253, 215, 0.45));
-  }
-  100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0px rgba(254, 253, 215, 0));
-  }
-}
 
-.pulsing-star {
-  animation: pulsar 3.5s ease-in-out infinite;
-  transform-origin: center;
-}
 /* ==================================================
    11. ACESSIBILIDADE
 ================================================== */
@@ -1083,32 +1064,46 @@ a.tile:hover .arrow {
 
 <header class="cover" id="topo">
 
-  <div class="mark-wrap" id="mark" style="text-align: center;">
-   
+  <div class="cover-top sm">
 
-    <!-- Texto fixo logo abaixo da estrela -->
-    <div style="font-family: var(--f); font-size: 11px; font-weight: 700; letter-spacing: 0.25em; color: #fefdd7; margin-top: 16px; text-transform: uppercase; opacity: 0.85;">
-      JFELIX® · CREATIVE DIRECTION · 2026
+    <div data-r>
+      João Felix<br>
+      Atendimento · Estratégia · Web
     </div>
+
+    <nav data-r>
+      <a href="#portfólios">Portfólios</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="r" data-r>
+      Instagram: @jfeelix_<br>
+      Sorocaba — SP<br>
+      2026
+    </div>
+
   </div>
 
   <div class="mark-wrap" id="mark">
 
-  <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
-      <!-- Anel externo tracejado / pontilhado giratório -->
-      <circle cx="100" cy="100" r="85" fill="none" stroke="#fefdd7" stroke-width="2" stroke-dasharray="6 8" opacity="0.6"/>
-      
-      <!-- Anel intermediário sólido -->
-      <circle cx="100" cy="100" r="70" fill="none" stroke="#fefdd7" stroke-width="3"/>
-      
-      <!-- Estrela de 4 pontas geométrica interna (estilo streetwear/editorial) -->
-      <path d="M100 25 C100 70, 130 100, 175 100 C130 100, 100 130, 100 175 C100 130, 70 100, 25 100 C70 100, 100 70, 100 25 Z" fill="#fefdd7"/>
-      
-      <!-- Miolo central de contraste -->
-      <circle cx="100" cy="100" r="18" fill="#aa2e28"/>
-      <circle cx="100" cy="100" r="6" fill="#fefdd7"/>
+    <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+
+      <g fill="#fefdd7">
+        <ellipse cx="100" cy="42" rx="15" ry="42"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(45 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(90 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(135 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(180 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(225 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(270 100 100)"/>
+        <ellipse cx="100" cy="42" rx="15" ry="42" transform="rotate(315 100 100)"/>
+      </g>
+
+      <circle cx="100" cy="100" r="17" fill="#aa2e28"/>
+
     </svg>
-    
+
   </div>
 
   <h1 id="titulo"><span id="fit">Portfólio</span></h1>
