@@ -150,7 +150,7 @@ a {
 }
 
 /* ==================================================
-   5. CAPA (LAYOUT REAJUSTADO SEM O GIRASSOL)
+   5. CAPA (ESTILO REFERÊNCIA BEHANCE)
 ================================================== */
 
 .cover {
@@ -161,7 +161,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 22px var(--pad) 40px;
+  padding: 22px var(--pad) 32px;
   overflow: hidden;
 }
 
@@ -192,14 +192,21 @@ a {
   text-align: right;
 }
 
+/* Bloco central ajustado igual à referência */
+.cover-center {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cover h1 {
   position: relative;
-  margin: auto 0;
-  padding: 20px 0;
   line-height: .8;
   white-space: nowrap;
   will-change: transform;
   text-align: center;
+  width: 100%;
 }
 
 .cover h1 span {
@@ -207,7 +214,7 @@ a {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -.055em;
-  font-size: 19vw;
+  font-size: 16vw;
 }
 
 .js .cover h1 span {
@@ -217,6 +224,18 @@ a {
 .js.ready .cover h1 span {
   transform: translate3d(0, 0, 0);
   transition: transform 1.5s var(--ease) .1s;
+}
+
+/* Linha inferior da capa: Nome à esquerda e Ano à direita */
+.cover-bottom-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
 }
 
 /* ==================================================
@@ -990,7 +1009,7 @@ a.tile:hover .arrow {
 <body>
 
 <!-- ==================================================
-     CAPA (SEM O GIRASSOL, TÍTULO CENTRALIZADO NO TOPO)
+     CAPA (ESTILO REFERÊNCIA: TÍTULO CENTRALIZADO + NOME E ANO NAS EXTREMIDADES)
 ================================================== -->
 
 <header class="cover" id="topo">
@@ -1016,7 +1035,14 @@ a.tile:hover .arrow {
 
   </div>
 
-  <h1 id="titulo"><span id="fit">Portfólio</span></h1>
+  <div class="cover-center">
+    <h1 id="titulo"><span id="fit">Portfólio</span></h1>
+  </div>
+
+  <div class="cover-bottom-info sm" data-r>
+    <span>João Felix</span>
+    <span>2026</span>
+  </div>
 
 </header>
 
