@@ -192,7 +192,6 @@ a {
   text-align: right;
 }
 
-/* Bloco central ajustado igual à referência */
 .cover-center {
   margin: auto 0;
   display: flex;
@@ -226,7 +225,6 @@ a {
   transition: transform 1.5s var(--ease) .1s;
 }
 
-/* Linha inferior da capa: Nome à esquerda e Ano à direita */
 .cover-bottom-info {
   display: flex;
   justify-content: space-between;
@@ -410,8 +408,6 @@ a.tile:hover .arrow {
   opacity: .65;
 }
 
-/* PALETA MACKA APLICADA */
-
 .c0 {
   background: var(--terra);
   color: var(--cream);
@@ -512,24 +508,25 @@ a.tile:hover .arrow {
 }
 
 /* ==================================================
-   9. RODAPÉ
+   9. RODAPÉ (AJUSTADO)
 ================================================== */
 
 footer {
   background: var(--terra);
   color: var(--cream);
-  padding: 100px var(--pad) 26px;
+  padding: 70px var(--pad) 26px;
 }
 
 footer h2 {
-  font-size: clamp(64px, 14vw, 230px);
+  font-size: clamp(40px, 8vw, 110px);
+  line-height: .9;
 }
 
 .flinks {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 36px;
-  margin-top: 44px;
+  margin-top: 36px;
 }
 
 .flinks a {
@@ -547,7 +544,7 @@ footer h2 {
   justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
-  margin-top: 90px;
+  margin-top: 50px;
 }
 
 /* ==================================================
@@ -624,11 +621,11 @@ footer h2 {
   }
 
   footer {
-    padding-top: 70px;
+    padding-top: 50px;
   }
 
   .fbottom {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 }
 
@@ -1009,7 +1006,7 @@ a.tile:hover .arrow {
 <body>
 
 <!-- ==================================================
-     CAPA (ESTILO REFERÊNCIA: TÍTULO CENTRALIZADO + NOME E ANO NAS EXTREMIDADES)
+     CAPA
 ================================================== -->
 
 <header class="cover" id="topo">
@@ -1179,7 +1176,7 @@ a.tile:hover .arrow {
 
 <footer id="contato">
 
-  <h2 class="big split">Busco minha próxima<br>oportunidade em<br>agência. Vamos<br>conversar?</h2>
+  <h2 class="big split">Busco minha próxima<br>oportunidade em agência.<br>Vamos conversar?</h2>
 
   <div class="flinks sm" data-r>
 
