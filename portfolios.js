@@ -32,14 +32,14 @@ window.PORTFOLIOS = [
     url: "https://designs-jfeelix.vercel.app",
     status: "no-ar"
   },
-  {
-    id: "fotos",
-    titulo: "Fotos",
-    sub: "Fotografia · Lightroom",
-    desc: "Fotografia de eventos, com edição própria.",
-    url: "https://fotos-jfeelix.vercel.app",
-    status: "em-breve"
-  },
+ {
+  id: "fotos",
+  titulo: "Fotos",
+  sub: "Fotografia · Lightroom",
+  desc: "Fotografia de eventos, shows e retratos autorais com edição própria.",
+  url: "https://fotos-jfeelix.vercel.app",
+  status: "no-ar"
+},
   {
     id: "eventos",
     titulo: "Eventos",
