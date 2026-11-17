@@ -21,8 +21,7 @@ window.PORTFOLIOS = [
     titulo: "Marca",
     sub: "Branding · Identidade · Produto",
     desc: "Projeto da marca OrganiCo: conceito, identidade visual, mockups e coleções.",
-    url: "https://marca-jfeelix.vercel.app",
-    status: "em-breve"
+    url: "https://https://organico-street.vercel.app/",
   },
   {
     id: "designs",
