@@ -19,9 +19,10 @@ window.PORTFOLIOS = [
   {
     id: "marca",
     titulo: "Marca",
-    sub: "Branding · Identidade · Produto",
-    desc: "Projeto da marca OrganiCo: conceito, identidade visual, mockups e coleções.",
-    url: "https://https://organico-street.vercel.app/",
+    sub: "Branding · Streetwear Consciente · Produto",
+    desc: "Projeto da marca OrganiCo®: conceito sustentável, upcycling de brechós, embalagens plantáveis e coleções.",
+    url: "https://organico-street.vercel.app",
+    status: "no-ar"
   },
   {
     id: "designs",
@@ -31,14 +32,14 @@ window.PORTFOLIOS = [
     url: "https://designs-jfeelix.vercel.app",
     status: "no-ar"
   },
- {
-  id: "fotos",
-  titulo: "Fotos",
-  sub: "Fotografia · Lightroom",
-  desc: "Fotografia de eventos, shows e retratos autorais com edição própria.",
-  url: "https://fotos-jfeelix.vercel.app",
-  status: "no-ar"
-},
+  {
+    id: "fotos",
+    titulo: "Fotos",
+    sub: "Fotografia · Lightroom",
+    desc: "Fotografia de eventos, shows e retratos autorais com edição própria.",
+    url: "https://fotos-jfeelix.vercel.app",
+    status: "no-ar"
+  },
   {
     id: "eventos",
     titulo: "Eventos",
