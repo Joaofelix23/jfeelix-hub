@@ -54,6 +54,6 @@ window.PORTFOLIOS = [
     sub: "HTML · CSS · JS",
     desc: "Sites e hubs criados do zero, como o site da Copa do Namata ou todo o portifólio.",
     url: "https://web-jfeelix.vercel.app",
-    status: "em-breve"
+    status: "no-ar"
   }
 ];
